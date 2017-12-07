@@ -1,7 +1,7 @@
 # MyReadingList
 
 ## Annotation
-TBD
+TBD...
 
 ## Description
 I need a very simple, fast and convenient one page application to store the lists of articles that I want to read. Application might be used with all devices (PC, tablet, mobile). With modern design, perhaps Flat Design.
