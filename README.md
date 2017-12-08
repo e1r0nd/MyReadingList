@@ -8,7 +8,8 @@ I need a very simple, fast and convenient one page application to store the list
 
 ## Author
 Anatol Marezhanyi @e1r0nd_crg<br>
-http://linkedin.com/in/merezhany/
+https://linkedin.com/in/merezhany/<br>
+https://youtube.com/c/AnatolMerezhanyi
 
 ## Compilation
 In the project directory, you can run: `npm start`
