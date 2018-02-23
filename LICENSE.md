@@ -1,6 +1,6 @@
-MIT License
+The MIT License (MIT)
 
-Copyright (c) 2016 Anatol Merezhanyi
+Copyright (c) 2018, Anatol Merezhanyi - https://github.com/e1r0nd/PersonalBookShelf
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -19,3 +19,12 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+
+## Acknowledgements:
+
+- Some original Bootstrap code and documentation http://getbootstrap.com
+`Copyright (c) 2011-2015, Twitter Inc.`
+
+- Some original Bootstrap Material Design code https://github.com/FezVrasta/bootstrap-material-design
+`Copyright (c) 2015-2016, Federico Zivolo and contributors`

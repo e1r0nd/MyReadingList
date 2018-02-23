@@ -1,0 +1,19 @@
+sudo: false
+language: node_js
+node_js:
+  - "stable"
+
+cache:
+  directories:
+    - node_modules
+
+install:
+  - npm install
+
+script:
+  - npm run test -- --coverage # Include coverage when running tests
+  - npm run build
+
+# Upload coverage reports
+after_success:
+  - CODACY_PROJECT_TOKEN=$codacy_repo_token npm run codacy-coverage

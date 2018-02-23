@@ -8,4 +8,13 @@ build
 
 # misc
 .DS_Store
-npm-debug.log
+npm-debug.log*
+
+# build artifacts
+/node_modules
+/.tmp
+/.sass-cache
+/coverage
+/.coveralls.yml
+src/**/*.css
+bash.exe.stackdump
