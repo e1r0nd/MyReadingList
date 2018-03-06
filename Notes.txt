@@ -1,0 +1,22 @@
+Top
+* Burger button on Mobile
+* Title
+* Search
+
+Left - Navigation
+* visible on Desktop, hidden on Tablet, Mobile
+* TopLeft - image & login, click to settings or relogin?
+* Read, Want to read ... - list of categories
+* separator - statictics, settings, synchronize
+* separator - logout
+
+Right - nothing
+
+Central - Content canvas
+* Just the list (like Drive list)
+* Title, Author; Date if any, quote if any
+* Click on it - make it bigger, edditable fields, separate from the list
+
+Bottom - nothing
+
+Add new - FAB on Desktop and Mobile

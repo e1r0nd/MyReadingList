@@ -1,23 +1,41 @@
-import React from "react";
-// import React, { Component } from "react";
-import { slide as Menu } from "react-burger-menu";
+// import React from "react";
+import React, { Component } from "react";
 import "./Navigation.css";
+import Menu from "../Menu/Menu";
+import BurgerBtn from "../Menu/BurgerBtn";
 
-const Navigation = () => (
-  <Menu>
-    <a id="home" className="menu-item" href="/">
-      Home
-    </a>
-    <a id="about" className="menu-item" href="/about">
-      About
-    </a>
-    <a id="contact" className="menu-item" href="/contact">
-      Contact
-    </a>
-    <a onClick={this.showSettings} className="menu-item--small" href="">
-      Settings
-    </a>
-  </Menu>
-);
+class Navigation extends Component {
+  menu = {
+    selected: 0,
+    items: [
+      {
+        title: "1",
+        link: "2",
+        icon: "3",
+        className: "4"
+      },
+      {
+        title: "10",
+        link: "20",
+        icon: "30",
+        className: "40"
+      }
+    ]
+  };
+
+  render() {
+    return (
+      <header>
+        <div className="header">
+          <BurgerBtn />
+          <span id="sideNavTitle" className="side-nav__title">
+            Books
+          </span>
+        </div>
+        <Menu menu={this.menu} />
+      </header>
+    );
+  }
+}
 
 export default Navigation;

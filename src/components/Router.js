@@ -10,10 +10,6 @@ class Router extends Component {
     items: []
   };
 
-  showSettings(event) {
-    event.preventDefault();
-  }
-
   render() {
     return (
       <Fragment>
