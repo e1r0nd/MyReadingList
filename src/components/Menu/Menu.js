@@ -3,13 +3,24 @@ import propTypes from "prop-types";
 import MenuItem from "./MenuItem";
 
 class Menu extends Component {
+  showButtonEl = React.createRef();
+  hideButtonEl = React.createRef();
+  // sideNavEl = React.createRef();
+  sideNavContainerEl = React.createRef();
+
   render() {
     return (
       <Fragment>
-        <aside id="sideNav" className="side-nav">
+        <aside
+          id="sideNav"
+          className="side-nav"
+          ref={this.props.sideNavEl}
+          onClick={this.props.hideSideNav}
+        >
           <nav id="sideNavContainer" className="side-nav__container">
             <button
               id="menuHide"
+              onClick={this.props.hideSideNav}
               aria-label="hide menu"
               role="presentation"
               className="side-nav__hide u--pointer"
@@ -31,8 +42,7 @@ class Menu extends Component {
                 <span id="coverTitle">Rainy night</span>
                 <button
                   id="muteBtn"
-                  className="mute-btn"
-                  data-muted="false"
+                  className=""
                   aria-label="mute or unmute"
                   role="presentation"
                 >

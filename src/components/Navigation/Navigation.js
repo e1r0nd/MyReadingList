@@ -22,17 +22,52 @@ class Navigation extends Component {
       }
     ]
   };
+  sideNavEl = React.createRef();
+
+  showSideNav = () => {
+    console.log("show", this.sideNavEl);
+    this.sideNavEl.value.classList.add("side-nav--animatable");
+    this.sideNavEl.value.classList.add("side-nav--visible");
+    this.sideNavEl.value.addEventListener(
+      "transitionend",
+      this.onTransitionEnd
+    );
+  };
+
+  hideSideNav = () => {
+    console.log("hide", this.sideNavEl);
+    this.sideNavEl.value.classList.add("side-nav--animatable");
+    this.sideNavEl.value.classList.remove("side-nav--visible");
+    this.sideNavEl.value.addEventListener(
+      "transitionend",
+      this.onTransitionEnd
+    );
+  };
+
+  onTransitionEnd = e => {
+    if ("transform" === e.propertyName) {
+      this.sideNavEl.value.classList.remove("side-nav--animatable");
+      this.sideNavEl.value.removeEventListener(
+        "transitionend",
+        this.onTransitionEnd
+      );
+    }
+  };
 
   render() {
     return (
       <header>
         <div className="header">
-          <BurgerBtn />
+          <BurgerBtn showSideNav={this.showSideNav} />
           <span id="sideNavTitle" className="side-nav__title">
             Books
           </span>
         </div>
-        <Menu menu={this.menu} />
+        <Menu
+          menu={this.menu}
+          hideSideNav={this.hideSideNav}
+          sideNavEl={this.sideNavEl}
+        />
       </header>
     );
   }
