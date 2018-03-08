@@ -5,8 +5,57 @@ import MenuItem from "./MenuItem";
 class Menu extends Component {
   showButtonEl = React.createRef();
   hideButtonEl = React.createRef();
-  // sideNavEl = React.createRef();
   sideNavContainerEl = React.createRef();
+
+  blockClicks = evt => {
+    evt.stopPropagation();
+  };
+
+  onTouchStart = evt => {
+    if (!this.props.sideNavEl.value.classList.contains("side-nav--visible")) {
+      return;
+    }
+
+    this.startX = evt.touches[0].pageX;
+    this.currentX = this.startX;
+
+    this.touchingSideNav = true;
+    requestAnimationFrame(this.update);
+  };
+
+  onTouchMove = evt => {
+    if (!this.touchingSideNav) {
+      return;
+    }
+
+    this.currentX = evt.touches[0].pageX;
+  };
+
+  onTouchEnd = () => {
+    if (!this.touchingSideNav) {
+      return;
+    }
+
+    this.touchingSideNav = false;
+
+    const translateX = Math.min(0, this.currentX - this.startX);
+    this.sideNavContainerEl.value.style.transform = "";
+
+    if (translateX < 0) {
+      this.props.hideSideNav();
+    }
+  };
+
+  update = () => {
+    if (!this.touchingSideNav) {
+      return;
+    }
+
+    requestAnimationFrame(this.update.bind(this));
+
+    const translateX = Math.min(0, this.currentX - this.startX);
+    this.sideNavContainerEl.value.style.transform = `translateX(${translateX}px)`;
+  };
 
   render() {
     return (
@@ -16,8 +65,16 @@ class Menu extends Component {
           className="side-nav"
           ref={this.props.sideNavEl}
           onClick={this.props.hideSideNav}
+          onTouchStart={this.onTouchStart}
+          onTouchMove={this.onTouchMove}
+          onTouchEnd={this.onTouchEnd}
         >
-          <nav id="sideNavContainer" className="side-nav__container">
+          <nav
+            id="sideNavContainer"
+            className="side-nav__container"
+            ref={this.sideNavContainerEl}
+            onClick={this.blockClicks}
+          >
             <button
               id="menuHide"
               onClick={this.props.hideSideNav}
@@ -68,6 +125,8 @@ class Menu extends Component {
 }
 
 Menu.propTypes = {
-  menu: propTypes.object
+  menu: propTypes.object,
+  sideNavEl: propTypes.object,
+  hideSideNav: propTypes.func
 };
 export default Menu;

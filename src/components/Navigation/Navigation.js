@@ -25,7 +25,6 @@ class Navigation extends Component {
   sideNavEl = React.createRef();
 
   showSideNav = () => {
-    console.log("show", this.sideNavEl);
     this.sideNavEl.value.classList.add("side-nav--animatable");
     this.sideNavEl.value.classList.add("side-nav--visible");
     this.sideNavEl.value.addEventListener(
@@ -35,7 +34,6 @@ class Navigation extends Component {
   };
 
   hideSideNav = () => {
-    console.log("hide", this.sideNavEl);
     this.sideNavEl.value.classList.add("side-nav--animatable");
     this.sideNavEl.value.classList.remove("side-nav--visible");
     this.sideNavEl.value.addEventListener(
