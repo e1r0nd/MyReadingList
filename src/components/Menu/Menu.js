@@ -129,4 +129,5 @@ Menu.propTypes = {
   sideNavEl: propTypes.object,
   hideSideNav: propTypes.func
 };
+
 export default Menu;
