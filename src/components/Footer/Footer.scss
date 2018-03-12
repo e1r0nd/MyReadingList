@@ -1,0 +1,9 @@
+@import "../../styles/mixin";
+
+.footer {
+  border-top: 1px solid #80cbc4;
+  padding-top: 19px;
+}
+.footer-main {
+  @include main-content-format;
+}

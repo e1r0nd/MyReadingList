@@ -1,3 +1,5 @@
+@import "./styles/mixin";
+@import "./styles/variables";
 body {
   margin: 0;
   padding: 0;
@@ -9,13 +11,16 @@ body {
   background-color: #eee;
 }
 
+a,
+a:hover,
+a:visited,
+a:focus {
+  color: $linksColor;
+}
+
 .main {
   margin-top: 90px;
   margin-bottom: 20px;
-  margin-right: auto;
-  margin-left: auto;
-  padding-right: 15px;
-  padding-left: 15px;
   padding-top: 19px;
   padding-bottom: 19px;
   background-color: #fff;
@@ -23,13 +28,5 @@ body {
   border-radius: 2px;
   border: 0;
 
-  @media (min-width: 1200px) {
-    width: 1170px;
-  }
-  @media (min-width: 992px) {
-    width: 970px;
-  }
-  @media screen and (min-width: 768px) {
-    max-width: 730px;
-  }
+  @include main-content-format;
 }

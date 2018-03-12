@@ -4,6 +4,7 @@ import ListItems from "./ListItems/ListItems";
 import App from "./App/App";
 import NotFound from "./NotFound";
 import Navigation from "../components/Navigation/Navigation";
+import Footer from "../components/Footer/Footer";
 import sampleBooks from "../sample-books";
 import base from "../base";
 import idbKeyval from "idb-keyval";
@@ -57,6 +58,7 @@ class Router extends Component {
             </Switch>
           </BrowserRouter>
         </main>
+        <Footer />
       </Fragment>
     );
   }

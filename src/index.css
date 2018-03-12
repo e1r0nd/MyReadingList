@@ -9,19 +9,26 @@ body {
   background-color: #eee;
 }
 
+a,
+a:hover,
+a:visited,
+a:focus {
+  color: #009688;
+}
+
 .main {
   margin-top: 90px;
   margin-bottom: 20px;
-  margin-right: auto;
-  margin-left: auto;
-  padding-right: 15px;
-  padding-left: 15px;
   padding-top: 19px;
   padding-bottom: 19px;
   background-color: #fff;
   box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border-radius: 2px;
   border: 0;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 15px;
+  padding-left: 15px;
 }
 @media (min-width: 1200px) {
   .main {

@@ -1,59 +1,57 @@
 @mixin size($size) {
-  width:$size;
-  height:$size;
+  width: $size;
+  height: $size;
 }
 
 @mixin abs-pos {
-  display:block;
-  position:absolute;
-  top:0;
-  left:0;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 @mixin cover {
   @include abs-pos;
   @include size(100%);
-  opacity:1;
-  transition:opacity 1s;
-  will-change:opacity;
-  z-index:0;
+  opacity: 1;
+  transition: opacity 1s;
+  will-change: opacity;
+  z-index: 0;
 }
 
 @mixin background-cover {
-  background-color:#222;
-  background-size:cover;
-  background-position:center;
-  background-repeat:no-repeat;
+  background-color: #222;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 @mixin background-preload($image) {
-  $image-title:$image + "-bg@pre.jpg";
-  background-image:url($image-title);
+  $image-title: $image + "-bg@pre.jpg";
+  background-image: url($image-title);
   @include background-cover;
 }
 
-@mixin background($image, $wide:false) {
-  $image-1:$image + "-bg@x1.jpg";
-  $image-1-w:$image + "-bg-w@x1.jpg";
-  $image-2:$image + "-bg@x2.jpg";
-  $image-2-w:$image + "-bg-w@x2.jpg";
-  $image-3:$image + "-bg@x3.jpg";
-  $image-3-w:$image + "-bg-w@x3.jpg";
+@mixin background($image, $wide: false) {
+  $image-1: $image + "-bg@x1.jpg";
+  $image-1-w: $image + "-bg-w@x1.jpg";
+  $image-2: $image + "-bg@x2.jpg";
+  $image-2-w: $image + "-bg-w@x2.jpg";
+  $image-3: $image + "-bg@x3.jpg";
+  $image-3-w: $image + "-bg-w@x3.jpg";
 
   @include background-cover;
-  background-image:url($image-1);
+  background-image: url($image-1);
 
   @media screen and (orientation: portrait) {
-    background-image:url($image-1);
-    @media /* Use x2 images iPhone 6 & Retina HD displays */
-    (-webkit-min-device-pixel-ratio: 2),
-    (min-resolution: 192dpi) {
-      background-image:url($image-2);
+    background-image: url($image-1);
+    @media /* Use x2 images iPhone 6 & Retina HD displays */ (-webkit-min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi) {
+      background-image: url($image-2);
     }
-    @media /* Use x3 images for iPhone 6 plus and similar devices */
-    (-webkit-min-device-pixel-ratio: 3),
-    (min-resolution: 350dpi) {
-      background-image:url($image-3);
+    @media /* Use x3 images for iPhone 6 plus and similar devices */ (-webkit-min-device-pixel-ratio: 3),
+      (min-resolution: 350dpi) {
+      background-image: url($image-3);
     }
   }
 
@@ -61,18 +59,33 @@
     @media only screen and (orientation: landscape) {
       // @media /* Use x1 images for Desktop */
       //  (min-width: 468px) {
-      background-image:url($image-1-w);
+      background-image: url($image-1-w);
       // }
-      @media /* Use x2 images iPhone 6 & Retina HD displays */
-      (-webkit-min-device-pixel-ratio: 2) and (min-width: 468px),
-      (min-resolution: 192dpi) and (min-width: 468px) {
-        background-image:url($image-2-w);
+      @media /* Use x2 images iPhone 6 & Retina HD displays */ (-webkit-min-device-pixel-ratio: 2) and (min-width: 468px),
+        (min-resolution: 192dpi) and (min-width: 468px) {
+        background-image: url($image-2-w);
       }
-      @media /* Use x3 images for iPhone 6 plus and similar devices */
-      (-webkit-min-device-pixel-ratio: 3) and (min-width: 468px),
-      (min-resolution: 350dpi) and (min-width: 468px) {
-        background-image:url($image-3-w);
+      @media /* Use x3 images for iPhone 6 plus and similar devices */ (-webkit-min-device-pixel-ratio: 3) and (min-width: 468px),
+        (min-resolution: 350dpi) and (min-width: 468px) {
+        background-image: url($image-3-w);
       }
     }
+  }
+}
+
+@mixin main-content-format {
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 15px;
+  padding-left: 15px;
+
+  @media (min-width: 1200px) {
+    width: 1170px;
+  }
+  @media (min-width: 992px) {
+    width: 970px;
+  }
+  @media screen and (min-width: 768px) {
+    max-width: 730px;
   }
 }
