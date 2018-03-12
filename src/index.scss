@@ -6,16 +6,20 @@ body {
   font-family: Roboto, Helvetica, Arial, sans-serif;
   font-weight: 300;
   font-size: 14px;
-  line-height: 1.42857143;
+  line-height: 1.4;
   color: #333;
   background-color: #eee;
+  width: 100vw;
 }
 
 a,
-a:hover,
-a:visited,
-a:focus {
+a:visited {
   color: $linksColor;
+}
+
+a:hover,
+a:focus {
+  color: $linksColorHovered;
 }
 
 .main {

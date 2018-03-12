@@ -1,13 +1,12 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import propTypes from "prop-types";
-import Item from "../Item/Item";
+import Item from "./Item";
 import "./ListItems.css";
 
 class ListItems extends Component {
   render() {
     return (
-      <div className="list">
-        <h2>books</h2>
+      <Fragment>
         {Object.keys(this.props.books).map(key => (
           <Item
             key={key}
@@ -17,7 +16,7 @@ class ListItems extends Component {
             // deleteFish={this.props.deleteFish}
           />
         ))}
-      </div>
+      </Fragment>
     );
   }
 }

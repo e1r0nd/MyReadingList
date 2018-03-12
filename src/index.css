@@ -4,16 +4,20 @@ body {
   font-family: Roboto, Helvetica, Arial, sans-serif;
   font-weight: 300;
   font-size: 14px;
-  line-height: 1.42857143;
+  line-height: 1.4;
   color: #333;
   background-color: #eee;
+  width: 100vw;
 }
 
 a,
-a:hover,
-a:visited,
-a:focus {
+a:visited {
   color: #009688;
+}
+
+a:hover,
+a:focus {
+  color: #004d40;
 }
 
 .main {
@@ -27,8 +31,6 @@ a:focus {
   border: 0;
   margin-right: auto;
   margin-left: auto;
-  padding-right: 15px;
-  padding-left: 15px;
 }
 @media (min-width: 1200px) {
   .main {

@@ -2,7 +2,7 @@
 $header-background: #34495e;
 $header-shadow: rgba(0, 0, 0, 0.3);
 $header-hero-background: #222;
-$header-hero-shadow: rgba(255, 255, 255, 0.2);
+$header-hero-shadow: rgba(0, 0, 0, 0.6);
 $title-color: #fff;
 $link-hover-background: #ecf0f1;
 $curve-transition: cubic-bezier(0, 0, 0.3, 1);
@@ -31,7 +31,7 @@ $curve-transition: cubic-bezier(0, 0, 0.3, 1);
   padding: 0 16px;
   position: fixed;
   top: 0;
-  width: 100%;
+  width: 100vw;
 }
 
 .header__menu-toggle {
@@ -43,6 +43,8 @@ $curve-transition: cubic-bezier(0, 0, 0.3, 1);
   padding: 0;
   position: absolute;
   width: 24px;
+
+  @include cursor-pointer;
 }
 
 .side-nav {
@@ -106,6 +108,8 @@ $curve-transition: cubic-bezier(0, 0, 0.3, 1);
   @extend .btn;
   left: 16px;
   top: 16px;
+
+  @include cursor-pointer;
 }
 
 .side-nav__mock-bg {
