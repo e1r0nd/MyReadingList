@@ -10,13 +10,13 @@ class Navigation extends Component {
     items: [
       {
         title: "1",
-        link: "2",
+        link: "/page/2",
         icon: "3",
         className: "4"
       },
       {
         title: "10",
-        link: "20",
+        link: "/page/20",
         icon: "30",
         className: "40"
       }

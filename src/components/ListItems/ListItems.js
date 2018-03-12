@@ -1,26 +1,29 @@
 import React, { Component } from "react";
+import propTypes from "prop-types";
+import Item from "../Item/Item";
+import "./ListItems.scss";
 
 class ListItems extends Component {
-  myInput = React.createRef();
-  gotoStore = event => {
-    event.preventDefault();
-    const storeName = this.myInput.value.value;
-    this.props.history.push(`/page/${storeName}`);
-  };
   render() {
     return (
-      <form className="store-selector" onSubmit={this.gotoStore}>
-        <h2>Please Enter a Store</h2>
-        <input
-          type="text"
-          ref={this.myInput}
-          required
-          placeholder="Store Name"
-        />
-        <button type="submit">Select Store</button>
-      </form>
+      <div className="list">
+        <h2>books</h2>
+        {Object.keys(this.props.books).map(key => (
+          <Item
+            key={key}
+            book={this.props.books[key]}
+            // updateBook={this.props.updateFish}
+            index={key}
+            // deleteFish={this.props.deleteFish}
+          />
+        ))}
+      </div>
     );
   }
 }
+
+ListItems.propTypes = {
+  books: propTypes.object
+};
 
 export default ListItems;

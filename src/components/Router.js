@@ -7,6 +7,7 @@ import Navigation from "../components/Navigation/Navigation";
 import sampleBooks from "../sample-books";
 import base from "../base";
 import idbKeyval from "idb-keyval";
+import addPropsToRoute from "./AddPropsToRoute";
 
 class Router extends Component {
   state = {
@@ -14,6 +15,7 @@ class Router extends Component {
   };
 
   componentDidMount() {
+    // https://www.npmjs.com/package/idb-keyval
     idbKeyval.get("sampleBooks").then(idbKeyvalRef => {
       const books = idbKeyvalRef ? idbKeyvalRef : sampleBooks;
 
@@ -38,16 +40,23 @@ class Router extends Component {
   }
 
   render() {
+    const passingProps = { books: this.state.books };
     return (
       <Fragment>
         <Navigation />
-        <BrowserRouter>
-          <Switch>
-            <Route exact path="/" component={App} />
-            <Route path="/page/:pageId" component={ListItems} />
-            <Route component={NotFound} />
-          </Switch>
-        </BrowserRouter>
+        <main className="main">
+          <BrowserRouter>
+            <Switch>
+              <Route
+                exact
+                path="/"
+                component={addPropsToRoute(ListItems, passingProps)}
+              />
+              <Route path="/page/:pageId" component={App} />
+              <Route component={NotFound} />
+            </Switch>
+          </BrowserRouter>
+        </main>
       </Fragment>
     );
   }
