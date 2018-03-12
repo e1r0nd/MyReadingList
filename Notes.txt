@@ -11,7 +11,7 @@ Left - Navigation
 * separator - statictics, settings, synchronize
 * separator - logout
 
-Add new - FAB in the top-right conner above Navigation, 50% covers, on Desktop and Mobile
+Add new - + on the right as Burger button
 
 Right - Add new Form, slide in/out the same as Navigation
 
