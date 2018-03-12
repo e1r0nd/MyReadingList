@@ -6,6 +6,7 @@ import NotFound from "./NotFound";
 import Navigation from "../components/Navigation/Navigation";
 import sampleBooks from "../sample-books";
 import base from "../base";
+import idbKeyval from "idb-keyval";
 
 class Router extends Component {
   state = {
@@ -13,21 +14,23 @@ class Router extends Component {
   };
 
   componentDidMount() {
-    const localStorageRef = localStorage.getItem("sampleBooks");
-    const books = localStorageRef ? JSON.parse(localStorageRef) : sampleBooks;
+    idbKeyval.get("sampleBooks").then(idbKeyvalRef => {
+      const books = idbKeyvalRef ? idbKeyvalRef : sampleBooks;
 
-    this.setState({ books });
-    if (!localStorageRef) {
-      localStorage.setItem("sampleBooks", JSON.stringify(this.state.books));
-    }
-    this.ref = base.syncState("sampleBooks/books", {
-      context: this,
-      state: "books"
+      // eslint-disable-next-line
+      this.setState({ books });
+      if (!idbKeyvalRef) {
+        idbKeyval.set("sampleBooks", books);
+      }
+      this.ref = base.syncState("sampleBooks/books", {
+        context: this,
+        state: "books"
+      });
     });
   }
 
   componentDidUpdate() {
-    localStorage.setItem("sampleBooks", JSON.stringify(this.state.books));
+    idbKeyval.set("sampleBooks", this.state.books);
   }
 
   componentWillUnmount() {

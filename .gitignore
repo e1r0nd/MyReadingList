@@ -1,6 +1,6 @@
 # See https://help.github.com/ignore-files/ for more about ignoring files.
 
-src/*.css
+/**/*.css
 src/**/*.css
 
 # dependencies
@@ -13,6 +13,7 @@ src/**/*.css
 /build
 
 # misc
+/.vscode
 .DS_Store
 .env.local
 .env.development.local
