@@ -2,8 +2,10 @@
   "name": "myreadinglist",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://e1r0nd.github.io/MyReadingList",
   "dependencies": {
     "firebase": "^4.10.0",
+    "gh-pages": "^1.1.0",
     "idb-keyval": "^2.3.0",
     "prop-types": "^15.6.1",
     "re-base": "3.2.2",
@@ -22,19 +24,20 @@
   },
   "scripts": {
     "precommit": "lint-staged",
-    "build-css": "node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/",
-    "watch-css": "npm run build-css && node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/ --watch --recursive",
+    "build-css":
+      "node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/",
+    "watch-css":
+      "npm run build-css && node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/ --watch --recursive",
     "start-js": "react-scripts start",
     "start": "npm-run-all -p watch-css start-js",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "build-js": "react-scripts build",
     "build": "npm-run-all build-css build-js",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
   "lint-staged": {
-    "src/**/*.{js,jsx,json,css}": [
-      "prettier --write",
-      "git add"
-    ]
+    "src/**/*.{js,jsx,json,css}": ["prettier --write", "git add"]
   }
 }
