@@ -5,7 +5,6 @@
   "homepage": "https://e1r0nd.github.io/MyReadingList",
   "dependencies": {
     "firebase": "^4.10.0",
-    "gh-pages": "^1.1.0",
     "idb-keyval": "^2.3.0",
     "prop-types": "^15.6.1",
     "re-base": "3.2.2",
