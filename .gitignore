@@ -1,19 +1,18 @@
 # See https://help.github.com/ignore-files/ for more about ignoring files.
 
-/**/*.css
-src/**/*.css
+*.css
 
 # dependencies
-/node_modules
+node_modules/
 
 # testing
-/coverage
+coverage/
 
 # production
-/build
+build/
 
 # misc
-/.vscode
+.vscode/
 .DS_Store
 .env.local
 .env.development.local
