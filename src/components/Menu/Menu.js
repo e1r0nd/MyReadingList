@@ -1,12 +1,12 @@
 import React, { Component, Fragment } from "react";
-import propTypes from "prop-types";
+import PropTypes from "prop-types";
 import MenuItem from "./MenuItem";
 
 class Menu extends Component {
   static propTypes = {
-    menu: propTypes.object,
-    sideNavEl: propTypes.object,
-    hideSideNav: propTypes.func
+    menu: PropTypes.object,
+    sideNavEl: PropTypes.object,
+    hideSideNav: PropTypes.func
   };
 
   showButtonEl = React.createRef();

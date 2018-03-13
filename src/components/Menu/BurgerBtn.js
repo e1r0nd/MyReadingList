@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import propTypes from "prop-types";
+import PropTypes from "prop-types";
 
 class BurgerBtn extends Component {
   static propTypes = {
-    showSideNav: propTypes.func
+    showSideNav: PropTypes.func
   };
 
   render() {

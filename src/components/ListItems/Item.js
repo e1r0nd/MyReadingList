@@ -1,9 +1,18 @@
 import React, { Component } from "react";
-import propTypes from "prop-types";
+import PropTypes from "prop-types";
 
 class Item extends Component {
   static propTypes = {
-    book: propTypes.object
+    book: PropTypes.shape({
+      author: PropTypes.string,
+      date: PropTypes.string,
+      mark: PropTypes.string,
+      order: PropTypes.string,
+      type: PropTypes.string,
+      tag: PropTypes.string,
+      title: PropTypes.string,
+      quote: PropTypes.string
+    })
   };
   // handleClick = () => {
   //   this.props.addToOrder(this.props.index);

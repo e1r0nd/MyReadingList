@@ -1,11 +1,11 @@
 import React, { Component, Fragment } from "react";
-import propTypes from "prop-types";
+import PropTypes from "prop-types";
 import Item from "./Item";
 import "./ListItems.css";
 
 class ListItems extends Component {
   static propTypes = {
-    books: propTypes.object
+    books: PropTypes.object
   };
 
   render() {

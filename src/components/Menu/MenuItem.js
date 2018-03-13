@@ -1,11 +1,14 @@
 import React, { Component } from "react";
-import propTypes from "prop-types";
+import PropTypes from "prop-types";
 
 class MenuItem extends Component {
   static propTypes = {
-    details: propTypes.object,
-    selected: propTypes.number,
-    index: propTypes.number
+    details: PropTypes.shape({
+      title: PropTypes.string,
+      link: PropTypes.string
+    }),
+    selected: PropTypes.number,
+    index: PropTypes.number
   };
 
   render() {
