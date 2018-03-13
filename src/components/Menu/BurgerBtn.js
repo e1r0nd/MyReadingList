@@ -2,6 +2,10 @@ import React, { Component } from "react";
 import propTypes from "prop-types";
 
 class BurgerBtn extends Component {
+  static propTypes = {
+    showSideNav: propTypes.func
+  };
+
   render() {
     return (
       <button
@@ -26,9 +30,5 @@ class BurgerBtn extends Component {
     );
   }
 }
-
-BurgerBtn.propTypes = {
-  showSideNav: propTypes.func
-};
 
 export default BurgerBtn;

@@ -2,6 +2,12 @@ import React, { Component } from "react";
 import propTypes from "prop-types";
 
 class MenuItem extends Component {
+  static propTypes = {
+    details: propTypes.object,
+    selected: propTypes.number,
+    index: propTypes.number
+  };
+
   render() {
     const { title, link } = this.props.details;
     const { selected, index } = this.props;
@@ -20,11 +26,5 @@ class MenuItem extends Component {
     );
   }
 }
-
-MenuItem.propTypes = {
-  details: propTypes.object,
-  selected: propTypes.number,
-  index: propTypes.number
-};
 
 export default MenuItem;

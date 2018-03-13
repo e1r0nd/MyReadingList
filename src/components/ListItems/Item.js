@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import propTypes from "prop-types";
 
 class Item extends Component {
+  static propTypes = {
+    book: propTypes.object
+  };
   // handleClick = () => {
   //   this.props.addToOrder(this.props.index);
   // };
@@ -37,9 +40,5 @@ class Item extends Component {
     );
   }
 }
-
-Item.propTypes = {
-  book: propTypes.object
-};
 
 export default Item;

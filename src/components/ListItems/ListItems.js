@@ -4,6 +4,10 @@ import Item from "./Item";
 import "./ListItems.css";
 
 class ListItems extends Component {
+  static propTypes = {
+    books: propTypes.object
+  };
+
   render() {
     return (
       <Fragment>
@@ -20,9 +24,5 @@ class ListItems extends Component {
     );
   }
 }
-
-ListItems.propTypes = {
-  books: propTypes.object
-};
 
 export default ListItems;

@@ -3,6 +3,12 @@ import propTypes from "prop-types";
 import MenuItem from "./MenuItem";
 
 class Menu extends Component {
+  static propTypes = {
+    menu: propTypes.object,
+    sideNavEl: propTypes.object,
+    hideSideNav: propTypes.func
+  };
+
   showButtonEl = React.createRef();
   hideButtonEl = React.createRef();
   sideNavContainerEl = React.createRef();
@@ -123,11 +129,5 @@ class Menu extends Component {
     );
   }
 }
-
-Menu.propTypes = {
-  menu: propTypes.object,
-  sideNavEl: propTypes.object,
-  hideSideNav: propTypes.func
-};
 
 export default Menu;
