@@ -12,7 +12,8 @@ install:
 
 script:
   - npm run build
-  - npm run test-coverage # Include coverage when running tests
+  - npm run test -- --coverage # Include coverage when running tests
+  - npm run coverage
 
 # Upload coverage reports
 after_success:
