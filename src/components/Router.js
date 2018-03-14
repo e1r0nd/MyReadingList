@@ -12,39 +12,82 @@ import addPropsToRoute from "./AddPropsToRoute";
 
 class Router extends Component {
   state = {
-    books: {}
+    books: {},
+    uid: "",
+    userName: ""
+  };
+
+  syncStart = () => {
+    console.log(this.state.uid);
+    this.ref = base.syncState(`${this.state.uid}`, {
+      context: this,
+      state: "books"
+    });
   };
 
   componentDidMount() {
-    // https://www.npmjs.com/package/idb-keyval
-    idbKeyval.get("sampleBooks").then(idbKeyvalRef => {
-      const books = idbKeyvalRef ? idbKeyvalRef : sampleBooks;
-
-      // eslint-disable-next-line
-      this.setState({ books });
-      if (!idbKeyvalRef) {
-        idbKeyval.set("sampleBooks", books);
-      }
-      this.ref = base.syncState("sampleBooks/books", {
-        context: this,
-        state: "books"
-      });
-    });
+    this.bookService.loadLocalBooks();
   }
 
   componentDidUpdate() {
-    idbKeyval.set("sampleBooks", this.state.books);
+    idbKeyval.set("localBooks", this.state.books);
   }
 
-  componentWillUnmount() {
-    base.removeBinding(this.ref);
-  }
+  bookService = {
+    updateBook: (key, updatedBook) => {
+      const books = { ...this.state.books };
+      books[key] = updatedBook;
+      this.setState({ books });
+    },
+
+    reloadBooks: books => {
+      this.setState({ books });
+    },
+
+    loadLocalBooks: () => {
+      // https://www.npmjs.com/package/idb-keyval
+      idbKeyval.get("localBooks").then(idbKeyvalRef => {
+        const books = idbKeyvalRef ? idbKeyvalRef : sampleBooks;
+
+        // eslint-disable-next-line
+        this.setState({ books });
+        if (!idbKeyvalRef) {
+          idbKeyval.set("localBooks", books);
+        }
+      });
+    },
+
+    syncStart: () => {
+      console.log(this.state.uid);
+      console.log(this.state.books);
+      this.ref = base.syncState("books", {
+        context: this,
+        state: "books"
+      });
+    },
+
+    syncStop: () => {
+      base.removeBinding(this.ref);
+    }
+  };
+
+  userService = {
+    setUserId: (uid, userName) => {
+      uid && this.setState({ uid });
+      userName && this.setState({ userName });
+    }
+  };
 
   render() {
     const passingProps = { books: this.state.books };
     return (
       <Fragment>
-        <Navigation />
+        <Navigation
+          {...this.state}
+          syncStart={this.syncStart}
+          bookService={this.bookService}
+          userService={this.userService}
+        />
         <main className="main">
           <BrowserRouter>
             <Switch>

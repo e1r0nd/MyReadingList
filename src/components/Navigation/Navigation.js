@@ -1,10 +1,18 @@
-// import React from "react";
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import "./Navigation.css";
 import Menu from "../Menu/Menu";
 import BurgerBtn from "../Menu/BurgerBtn";
 
 class Navigation extends Component {
+  static propTypes = {
+    books: PropTypes.object.isRequired,
+    bookService: PropTypes.object,
+    uid: PropTypes.string.isRequired,
+    userName: PropTypes.string.isRequired,
+    userService: PropTypes.object
+  };
+
   menu = {
     selected: 0,
     items: [
@@ -62,6 +70,7 @@ class Navigation extends Component {
           </span>
         </div>
         <Menu
+          {...this.props}
           menu={this.menu}
           hideSideNav={this.hideSideNav}
           sideNavEl={this.sideNavEl}

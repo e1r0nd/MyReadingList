@@ -1,0 +1,33 @@
+{
+  "book321": {
+    "author": "Author A",
+    "date": "",
+    "mark": "5",
+    "order": "1",
+    "type": "book",
+    "tag": "fiction",
+    "title": "New Book",
+    "quote":
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore."
+  },
+  "book6542": {
+    "author": "https://github.com/e1r0nd/PersonalBookShelf/wiki",
+    "date": "",
+    "mark": "5",
+    "order": "2",
+    "type": "article",
+    "tag": "education",
+    "title": "e1r0nd: PBS - Wiki",
+    "quote": ""
+  },
+  "book00563": {
+    "author": "Author A",
+    "date": "",
+    "mark": "5",
+    "order": "3",
+    "type": "book",
+    "tag": "education",
+    "title": "Old book",
+    "quote": ""
+  }
+}

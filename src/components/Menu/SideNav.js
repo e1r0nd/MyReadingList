@@ -1,31 +1,16 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
-import MenuItem from "./MenuItem";
-import Login from "./Login";
 
 class Menu extends Component {
   static propTypes = {
-    books: PropTypes.object.isRequired,
-    bookService: PropTypes.object,
-    uid: PropTypes.string.isRequired,
-    userName: PropTypes.string.isRequired,
-    userService: PropTypes.object,
     menu: PropTypes.object,
     sideNavEl: PropTypes.object,
     hideSideNav: PropTypes.func
   };
 
-  componentDidMount() {
-    // Lazy load the background image
-    setTimeout(() => {
-      this.sideNavHeader.value.classList.add("side-nav__header--lazy-bg");
-    }, 1000);
-  }
-
   showButtonEl = React.createRef();
   hideButtonEl = React.createRef();
   sideNavContainerEl = React.createRef();
-  sideNavHeader = React.createRef();
 
   blockClicks = evt => {
     evt.stopPropagation();
@@ -81,7 +66,6 @@ class Menu extends Component {
     return (
       <Fragment>
         <aside
-          id="sideNav"
           className="side-nav"
           ref={this.props.sideNavEl}
           onClick={this.props.hideSideNav}
@@ -90,13 +74,11 @@ class Menu extends Component {
           onTouchEnd={this.onTouchEnd}
         >
           <nav
-            id="sideNavContainer"
             className="side-nav__container"
             ref={this.sideNavContainerEl}
             onClick={this.blockClicks}
           >
             <button
-              id="menuHide"
               onClick={this.props.hideSideNav}
               aria-label="hide menu"
               role="presentation"
@@ -114,22 +96,7 @@ class Menu extends Component {
                 />
               </svg>
             </button>
-            <div className="side-nav__mock-bg">
-              <header className="side-nav__header" ref={this.sideNavHeader}>
-                <span>{this.props.userName}</span>
-                <Login {...this.props} />
-              </header>
-            </div>
-            <ul className="side-nav__content">
-              {this.props.menu.items.map((x, i) => (
-                <MenuItem
-                  key={i}
-                  details={x}
-                  selected={this.props.menu.selected}
-                  index={i}
-                />
-              ))}
-            </ul>
+            {/* Contenthere */}
           </nav>
         </aside>
       </Fragment>
