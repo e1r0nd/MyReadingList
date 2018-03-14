@@ -1,17 +1,17 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import "./Navigation.css";
 import Menu from "../Menu/Menu";
 import BurgerBtn from "../Menu/BurgerBtn";
 
 class Navigation extends Component {
-  static propTypes = {
-    books: PropTypes.object.isRequired,
-    bookService: PropTypes.object,
-    uid: PropTypes.string.isRequired,
-    userName: PropTypes.string.isRequired,
-    userService: PropTypes.object
-  };
+  // static propTypes = {
+  //   books: PropTypes.object.isRequired,
+  //   bookService: PropTypes.object,
+  //   uid: PropTypes.string.isRequired,
+  //   userName: PropTypes.string.isRequired,
+  //   userService: PropTypes.object
+  // };
 
   menu = {
     selected: 0,
@@ -31,6 +31,7 @@ class Navigation extends Component {
     ]
   };
   sideNavEl = React.createRef();
+  sideNavTitle = React.createRef();
 
   showSideNav = () => {
     this.sideNavEl.value.classList.add("side-nav--animatable");
@@ -65,12 +66,12 @@ class Navigation extends Component {
       <header>
         <div className="header">
           <BurgerBtn showSideNav={this.showSideNav} />
-          <span id="sideNavTitle" className="side-nav__title">
+          <span ref={this.sideNavTitle} className="side-nav__title">
             Books
           </span>
         </div>
         <Menu
-          {...this.props}
+          // {...this.props}
           menu={this.menu}
           hideSideNav={this.hideSideNav}
           sideNavEl={this.sideNavEl}

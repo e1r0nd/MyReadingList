@@ -1,24 +1,29 @@
 import React, { Component, Fragment } from "react";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
+import { MyContext } from "../Provider";
 import Item from "./Item";
 import "./ListItems.css";
 
 class ListItems extends Component {
-  static propTypes = {
-    books: PropTypes.object
-  };
+  // static propTypes = {
+  //   books: PropTypes.object
+  // };
 
   render() {
     return (
-      <Fragment>
-        {this.props.books.length ? (
-          Object.keys(this.props.books).map(key => (
-            <Item key={key} book={this.props.books[key]} index={key} />
-          ))
-        ) : (
-          <p>Nothing is here</p>
+      <MyContext.Consumer>
+        {ctx => (
+          <Fragment>
+            {ctx.state.books ? (
+              Object.keys(ctx.state.books).map(key => (
+                <Item key={key} book={ctx.state.books[key]} index={key} />
+              ))
+            ) : (
+              <p>Nothing is here</p>
+            )}
+          </Fragment>
         )}
-      </Fragment>
+      </MyContext.Consumer>
     );
   }
 }

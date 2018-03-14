@@ -1,15 +1,16 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
+import { MyContext } from "../Provider";
 import MenuItem from "./MenuItem";
 import Login from "./Login";
 
 class Menu extends Component {
   static propTypes = {
-    books: PropTypes.object.isRequired,
-    bookService: PropTypes.object,
-    uid: PropTypes.string.isRequired,
-    userName: PropTypes.string.isRequired,
-    userService: PropTypes.object,
+    // books: PropTypes.object.isRequired,
+    // bookService: PropTypes.object,
+    // uid: PropTypes.string.isRequired,
+    // userName: PropTypes.string.isRequired,
+    // userService: PropTypes.object,
     menu: PropTypes.object,
     sideNavEl: PropTypes.object,
     hideSideNav: PropTypes.func
@@ -81,7 +82,6 @@ class Menu extends Component {
     return (
       <Fragment>
         <aside
-          id="sideNav"
           className="side-nav"
           ref={this.props.sideNavEl}
           onClick={this.props.hideSideNav}
@@ -90,13 +90,11 @@ class Menu extends Component {
           onTouchEnd={this.onTouchEnd}
         >
           <nav
-            id="sideNavContainer"
             className="side-nav__container"
             ref={this.sideNavContainerEl}
             onClick={this.blockClicks}
           >
             <button
-              id="menuHide"
               onClick={this.props.hideSideNav}
               aria-label="hide menu"
               role="presentation"
@@ -116,8 +114,12 @@ class Menu extends Component {
             </button>
             <div className="side-nav__mock-bg">
               <header className="side-nav__header" ref={this.sideNavHeader}>
-                <span>{this.props.userName}</span>
-                <Login {...this.props} />
+                <span>
+                  <MyContext.Consumer>
+                    {ctx => ctx.userName || "Anonymous"}
+                  </MyContext.Consumer>
+                </span>
+                <Login />
               </header>
             </div>
             <ul className="side-nav__content">
