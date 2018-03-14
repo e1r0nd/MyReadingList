@@ -59,8 +59,7 @@ class Router extends Component {
 
     syncStart: () => {
       console.log(this.state.uid);
-      console.log(this.state.books);
-      this.ref = base.syncState("books", {
+      this.ref = base.syncState(`${this.state.uid}`, {
         context: this,
         state: "books"
       });
