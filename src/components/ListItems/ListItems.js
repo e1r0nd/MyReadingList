@@ -11,15 +11,13 @@ class ListItems extends Component {
   render() {
     return (
       <Fragment>
-        {Object.keys(this.props.books).map(key => (
-          <Item
-            key={key}
-            book={this.props.books[key]}
-            // updateBook={this.props.updateFish}
-            index={key}
-            // deleteFish={this.props.deleteFish}
-          />
-        ))}
+        {this.props.books.length ? (
+          Object.keys(this.props.books).map(key => (
+            <Item key={key} book={this.props.books[key]} index={key} />
+          ))
+        ) : (
+          <p>Nothing is here</p>
+        )}
       </Fragment>
     );
   }
