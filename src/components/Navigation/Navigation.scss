@@ -38,9 +38,7 @@ $curve-transition: cubic-bezier(0, 0, 0.3, 1);
   background: none;
   border: none;
   color: $title-color;
-  height: 24px;
-
-@include cursor-pointer;
+  height: 24px;@include cursor-pointer;
   margin: 0;
   padding: 0;
   position: absolute;
@@ -105,9 +103,7 @@ $curve-transition: cubic-bezier(0, 0, 0.3, 1);
 }
 
 .side-nav__hide {
-  @extend .btn;
-
-@include cursor-pointer;
+  @extend .btn;@include cursor-pointer;
   left: 16px;
   top: 16px;
 }

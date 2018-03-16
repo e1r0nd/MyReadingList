@@ -5,6 +5,5 @@
   padding-top: 19px;
 }
 .footer-main {
-  @include main-content-format;
-  @include main-content-paddings;
+  @include main-content-format;@include main-content-paddings;
 }

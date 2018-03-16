@@ -16,6 +16,7 @@
     "react-scripts": "1.1.1"
   },
   "devDependencies": {
+    "csscomb": "^4.2.0",
     "serve": "^6.5.3",
     "prop-types": "^15.6.1",
     "node-sass-chokidar": "0.0.3",
@@ -39,9 +40,10 @@
     "build": "npm-run-all build-css build-js",
     "test": "react-scripts test --env=jsdom",
     "codacy-coverage": "cat ./coverage/lcov.info | codacy-coverage",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "csscomb-all": "csscomb src/ --tty-mode"
   },
   "lint-staged": {
-    "src/**/*.{js,jsx,json,css}": ["prettier --write", "git add"]
+    "src/**/*.{js,jsx,json,scss}": ["csscomb --tty-mode", "prettier --write"]
   }
 }

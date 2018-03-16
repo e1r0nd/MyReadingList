@@ -2,13 +2,9 @@
 @import "../../styles/variables";
 
 .list-item {
-  @include main-content-paddings;
-  @include cursor-pointer;
-
-  list-style: none;
   border-bottom: 1px solid $borderColor;
-  font-size: 21px;
-
+  font-size: 21px;@include main-content-paddings;@include cursor-pointer;
+  list-style: none;
   &:last-child {
     border-bottom: none;
   }
@@ -22,7 +18,7 @@
   }
 
   &__date {
-    margin: 0;
     color: $grayText;
+    margin: 0;
   }
 }
