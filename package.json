@@ -40,10 +40,13 @@
     "build": "npm-run-all build-css build-js",
     "test": "react-scripts test --env=jsdom",
     "codacy-coverage": "cat ./coverage/lcov.info | codacy-coverage",
-    "eject": "react-scripts eject",
-    "csscomb-all": "csscomb src/ --tty-mode"
+    "eject": "react-scripts eject"
   },
   "lint-staged": {
-    "src/**/*.{js,jsx,json,scss}": ["csscomb --tty-mode --", "prettier --write"]
+    "src/**/*.{js,jsx,json,scss}": [
+      "csscomb --tty-mode --",
+      "prettier --write",
+      "git add"
+    ]
   }
 }

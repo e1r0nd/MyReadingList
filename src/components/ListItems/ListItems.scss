@@ -4,21 +4,19 @@
 .list-item {
   border-bottom: 1px solid $borderColor;
   font-size: 21px;
+
   @include main-content-paddings;
   @include cursor-pointer;
   list-style: none;
   &:last-child {
     border-bottom: none;
   }
-
   &__title {
     font-weight: 700;
   }
-
   &__author {
     font-style: italic;
   }
-
   &__date {
     color: $grayText;
     margin: 0;

@@ -28,7 +28,7 @@ a:focus {
   border-radius: 2px;
   box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
-@include main-content-format;
+  @include main-content-format;
   margin-bottom: 20px;
   margin-top: 90px;
   padding-bottom: 19px;

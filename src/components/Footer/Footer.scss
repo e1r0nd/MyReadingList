@@ -6,5 +6,6 @@
 }
 .footer-main {
   @include main-content-format;
+
   @include main-content-paddings;
 }
