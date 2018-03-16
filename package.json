@@ -44,6 +44,6 @@
     "csscomb-all": "csscomb src/ --tty-mode"
   },
   "lint-staged": {
-    "src/**/*.{js,jsx,json,scss}": ["csscomb --tty-mode", "prettier --write"]
+    "src/**/*.{js,jsx,json,scss}": ["csscomb --tty-mode --", "prettier --write"]
   }
 }

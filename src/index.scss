@@ -1,10 +1,9 @@
 @import "./styles/mixin";
 @import "./styles/variables";
 body {
- color: #333;
   background-color: #eee;
-  
- font-family: Roboto, Helvetica, Arial, sans-serif;
+  color: #333;
+  font-family: Roboto, Helvetica, Arial, sans-serif;
   font-size: 14px;
   font-weight: 300;
   line-height: 1.4;
@@ -27,7 +26,9 @@ a:focus {
   background-color: #fff;
   border: 0;
   border-radius: 2px;
-  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);@include main-content-format;
+  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+@include main-content-format;
   margin-bottom: 20px;
   margin-top: 90px;
   padding-bottom: 19px;
