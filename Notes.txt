@@ -22,4 +22,4 @@ Central - Content canvas
 
 Bottom - nothing
 
-Use consistent design - Material or Flat
+Use consistent design - based on Flat UI
