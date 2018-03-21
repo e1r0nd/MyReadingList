@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import "./Navigation.css";
 import Menu from "../Menu/Menu";
 import BurgerBtn from "../Menu/BurgerBtn";
+import AddNewBtn from "../Menu/AddNewBtn";
 
 class Navigation extends Component {
   // static propTypes = {
@@ -69,6 +70,7 @@ class Navigation extends Component {
           <span ref={this.sideNavTitle} className="side-nav__title">
             Books
           </span>
+          <AddNewBtn showSideNav={this.showSideNav} />
         </div>
         <Menu
           // {...this.props}
