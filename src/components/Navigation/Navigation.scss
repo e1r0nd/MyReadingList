@@ -23,6 +23,7 @@ $curve-transition: cubic-bezier(0, 0, 0.3, 1);
   align-items: center;
   background: $header-background;
   box-shadow: 0 2px 4px $header-shadow;
+  box-sizing: border-box;
   color: $title-color;
   display: flex;
   flex-direction: row;
@@ -31,7 +32,12 @@ $curve-transition: cubic-bezier(0, 0, 0.3, 1);
   padding: 0 16px;
   position: fixed;
   top: 0;
-  width: 100vw;
+  width: 100%;
+}
+
+.header__itm {
+  display: flex;
+  justify-content: space-between;
 }
 
 .header__menu-toggle {
@@ -39,13 +45,12 @@ $curve-transition: cubic-bezier(0, 0, 0.3, 1);
   border: none;
   color: $title-color;
   height: 24px;
+
   @include cursor-pointer;
   margin: 0;
   padding: 0;
-  position: absolute;
   width: 24px;
 }
-
 .side-nav {
   height: 100%;
   left: 0;
@@ -55,11 +60,9 @@ $curve-transition: cubic-bezier(0, 0, 0.3, 1);
   top: 0;
   width: 100%;
 }
-
 .side-nav--visible {
   pointer-events: auto;
 }
-
 .side-nav::before {
   background: $header-hero-shadow;
   content: "";
@@ -73,7 +76,6 @@ $curve-transition: cubic-bezier(0, 0, 0.3, 1);
   width: 100%;
   will-change: opacity;
 }
-
 .side-nav__container {
   background: $title-color;
   box-shadow: 2px 0 12px $header-hero-shadow;
@@ -86,34 +88,37 @@ $curve-transition: cubic-bezier(0, 0, 0.3, 1);
   width: 90%;
   will-change: transform;
 }
-
+.side-nav__container--right {
+  position: absolute;
+  right: 0;
+  transform: translateX(112%);
+  will-change: transform;
+}
 .side-nav--animatable .side-nav__container {
   transition: transform 0.13s $curve-transition;
 }
-
 .side-nav--visible.side-nav--animatable .side-nav__container {
   transition: transform 0.33s $curve-transition;
 }
-
 .side-nav--visible::before {
   opacity: 1;
 }
-
 .side-nav--visible .side-nav__container {
   transform: none;
 }
-
 .side-nav__hide {
   @extend .btn;
   @include cursor-pointer;
   left: 16px;
   top: 16px;
 }
-
+.side-nav__hide--right {
+  left: auto;
+  right: 16px;
+}
 .side-nav__mock-bg {
   background-color: $header-hero-background;
 }
-
 .side-nav__header {
   align-items: flex-end;
   background-color: $header-hero-background;
@@ -128,20 +133,17 @@ $curve-transition: cubic-bezier(0, 0, 0.3, 1);
   position: relative;
   transition: opacity 0.6s;
   will-change: opacity;
-
   &.side-nav__header--lazy-bg {
     @include background("menu");
     opacity: 1;
   }
 }
-
 .side-nav__title {
   color: $title-color;
   font-size: 24px;
   margin: 0 auto;
   padding-left: 0;
 }
-
 .side-nav__content {
   flex: 1;
   list-style: none;
@@ -152,19 +154,16 @@ $curve-transition: cubic-bezier(0, 0, 0.3, 1);
   padding: 0;
   padding-top: 32px;
 }
-
 .side-nav__content .side-nav__lnk {
   display: block;
   height: 48px;
   line-height: 48px;
   padding: 0 16px;
 }
-
 .side-nav__content .side-nav__lnk:hover,
 .side-nav__content .side-nav__lnk:focus {
   background: $link-hover-background;
 }
-
 .active,
 .selected {
   font-weight: bold;

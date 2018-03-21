@@ -3,14 +3,15 @@ import PropTypes from "prop-types";
 
 class BurgerBtn extends Component {
   static propTypes = {
-    showSideNav: PropTypes.func
+    showSideNav: PropTypes.func,
+    element: PropTypes.object
   };
 
   render() {
     return (
       <button
         id="menuShow"
-        onClick={this.props.showSideNav}
+        onClick={() => this.props.showSideNav(this.props.element)}
         aria-label="show menu"
         role="presentation"
         className="header__menu-toggle u--pointer"

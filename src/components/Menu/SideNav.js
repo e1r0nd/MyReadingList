@@ -1,16 +1,50 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
+import { MyContext } from "../Provider";
+import MenuItem from "./MenuItem";
+import Login from "./Login";
 
-class Menu extends Component {
+class SideNav extends Component {
   static propTypes = {
     menu: PropTypes.object,
-    sideNavEl: PropTypes.object,
-    hideSideNav: PropTypes.func
+    position: PropTypes.string,
+    sideNavEl: PropTypes.object.isRequired
+  };
+
+  static defaultProps = {
+    position: "left"
+  };
+
+  componentDidMount() {
+    // Lazy load the background image
+    setTimeout(() => {
+      this.sideNavHeader.value.classList.add("side-nav__header--lazy-bg");
+    }, 1000);
+  }
+
+  hideSideNav = () => {
+    this.props.sideNavEl.value.classList.add("side-nav--animatable");
+    this.props.sideNavEl.value.classList.remove("side-nav--visible");
+    this.props.sideNavEl.value.addEventListener(
+      "transitionend",
+      this.onTransitionEnd
+    );
+  };
+
+  onTransitionEnd = e => {
+    if ("transform" === e.propertyName) {
+      this.props.sideNavEl.value.classList.remove("side-nav--animatable");
+      this.props.sideNavEl.value.removeEventListener(
+        "transitionend",
+        this.onTransitionEnd
+      );
+    }
   };
 
   showButtonEl = React.createRef();
   hideButtonEl = React.createRef();
   sideNavContainerEl = React.createRef();
+  sideNavHeader = React.createRef();
 
   blockClicks = evt => {
     evt.stopPropagation();
@@ -23,7 +57,7 @@ class Menu extends Component {
 
     this.startX = evt.touches[0].pageX;
     this.currentX = this.startX;
-
+    console.log(this.startX, this.currentX);
     this.touchingSideNav = true;
     requestAnimationFrame(this.update);
   };
@@ -43,11 +77,14 @@ class Menu extends Component {
 
     this.touchingSideNav = false;
 
-    const translateX = Math.min(0, this.currentX - this.startX);
+    const isLeft = "left" === this.props.position;
+    const translateX = isLeft
+      ? Math.min(0, this.currentX - this.startX)
+      : Math.min(0, this.startX - this.currentX);
     this.sideNavContainerEl.value.style.transform = "";
-
+    console.log(translateX, this.currentX, this.startX);
     if (translateX < 0) {
-      this.props.hideSideNav();
+      this.hideSideNav();
     }
   };
 
@@ -57,32 +94,43 @@ class Menu extends Component {
     }
 
     requestAnimationFrame(this.update.bind(this));
-
-    const translateX = Math.min(0, this.currentX - this.startX);
+    const translateX =
+      "left" === this.props.position
+        ? Math.min(0, this.currentX - this.startX)
+        : Math.max(0, this.currentX - this.startX);
     this.sideNavContainerEl.value.style.transform = `translateX(${translateX}px)`;
   };
 
   render() {
+    const thisClass = `side-nav${
+      "right" === this.props.position ? " side-nav--right" : ""
+    }`;
+    const containerClass = `side-nav__container${
+      "right" === this.props.position ? " side-nav__container--right" : ""
+    }`;
+    const hideClass = `side-nav__hide u--pointer${
+      "right" === this.props.position ? " side-nav__hide--right" : ""
+    }`;
     return (
       <Fragment>
         <aside
-          className="side-nav"
+          className={thisClass}
           ref={this.props.sideNavEl}
-          onClick={this.props.hideSideNav}
+          onClick={this.hideSideNav}
           onTouchStart={this.onTouchStart}
           onTouchMove={this.onTouchMove}
           onTouchEnd={this.onTouchEnd}
         >
           <nav
-            className="side-nav__container"
+            className={containerClass}
             ref={this.sideNavContainerEl}
             onClick={this.blockClicks}
           >
             <button
-              onClick={this.props.hideSideNav}
+              onClick={this.hideSideNav}
               aria-label="hide menu"
               role="presentation"
-              className="side-nav__hide u--pointer"
+              className={hideClass}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -96,7 +144,28 @@ class Menu extends Component {
                 />
               </svg>
             </button>
-            {/* Contenthere */}
+            <div className="side-nav__mock-bg">
+              <header className="side-nav__header" ref={this.sideNavHeader}>
+                <span>
+                  <MyContext.Consumer>
+                    {ctx => ctx.userName || "Anonymous"}
+                  </MyContext.Consumer>
+                </span>
+                <Login />
+              </header>
+            </div>
+            {this.props.menu && (
+              <ul className="side-nav__content">
+                {this.props.menu.items.map((x, i) => (
+                  <MenuItem
+                    key={i}
+                    details={x}
+                    selected={this.props.menu.selected}
+                    index={i}
+                  />
+                ))}
+              </ul>
+            )}
           </nav>
         </aside>
       </Fragment>
@@ -104,4 +173,4 @@ class Menu extends Component {
   }
 }
 
-export default Menu;
+export default SideNav;

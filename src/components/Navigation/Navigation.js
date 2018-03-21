@@ -1,19 +1,12 @@
 import React, { Component } from "react";
 // import PropTypes from "prop-types";
 import "./Navigation.css";
-import Menu from "../Menu/Menu";
+// import Menu from "../Menu/Menu";
+import SideNav from "../Menu/SideNav";
 import BurgerBtn from "../Menu/BurgerBtn";
 import AddNewBtn from "../Menu/AddNewBtn";
 
 class Navigation extends Component {
-  // static propTypes = {
-  //   books: PropTypes.object.isRequired,
-  //   bookService: PropTypes.object,
-  //   uid: PropTypes.string.isRequired,
-  //   userName: PropTypes.string.isRequired,
-  //   userService: PropTypes.object
-  // };
-
   menu = {
     selected: 0,
     items: [
@@ -32,33 +25,23 @@ class Navigation extends Component {
     ]
   };
   sideNavEl = React.createRef();
+  addNewEl = React.createRef();
   sideNavTitle = React.createRef();
 
-  showSideNav = () => {
-    this.sideNavEl.value.classList.add("side-nav--animatable");
-    this.sideNavEl.value.classList.add("side-nav--visible");
-    this.sideNavEl.value.addEventListener(
-      "transitionend",
-      this.onTransitionEnd
-    );
-  };
-
-  hideSideNav = () => {
-    this.sideNavEl.value.classList.add("side-nav--animatable");
-    this.sideNavEl.value.classList.remove("side-nav--visible");
-    this.sideNavEl.value.addEventListener(
-      "transitionend",
-      this.onTransitionEnd
-    );
+  showSideNav = el => {
+    el.value.classList.add("side-nav--animatable");
+    el.value.classList.add("side-nav--visible");
+    el.value.addEventListener("transitionend", this.onTransitionEnd);
   };
 
   onTransitionEnd = e => {
     if ("transform" === e.propertyName) {
-      this.sideNavEl.value.classList.remove("side-nav--animatable");
-      this.sideNavEl.value.removeEventListener(
-        "transitionend",
-        this.onTransitionEnd
-      );
+      const target = document.querySelector(".side-nav--animatable");
+
+      if (target) {
+        target.classList.remove("side-nav--animatable");
+        target.removeEventListener("transitionend", this.onTransitionEnd);
+      }
     }
   };
 
@@ -66,17 +49,29 @@ class Navigation extends Component {
     return (
       <header>
         <div className="header">
-          <BurgerBtn showSideNav={this.showSideNav} />
-          <span ref={this.sideNavTitle} className="side-nav__title">
+          <BurgerBtn
+            showSideNav={this.showSideNav}
+            element={this.sideNavEl}
+            className="header__itm"
+          />
+          <span ref={this.sideNavTitle} className="side-nav__title header__itm">
             Books
           </span>
-          <AddNewBtn showSideNav={this.showSideNav} />
+          <AddNewBtn
+            showSideNav={this.showSideNav}
+            element={this.addNewEl}
+            className="header__itm"
+          />
         </div>
-        <Menu
-          // {...this.props}
+        <SideNav
           menu={this.menu}
-          hideSideNav={this.hideSideNav}
+          // hideSideNav={this.hideSideNav}
           sideNavEl={this.sideNavEl}
+        />
+        <SideNav
+          position="right"
+          // hideSideNav={this.hideSideNav}
+          sideNavEl={this.addNewEl}
         />
       </header>
     );
