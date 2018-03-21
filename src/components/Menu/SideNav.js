@@ -57,7 +57,6 @@ class SideNav extends Component {
 
     this.startX = evt.touches[0].pageX;
     this.currentX = this.startX;
-    console.log(this.startX, this.currentX);
     this.touchingSideNav = true;
     requestAnimationFrame(this.update);
   };
@@ -82,7 +81,7 @@ class SideNav extends Component {
       ? Math.min(0, this.currentX - this.startX)
       : Math.min(0, this.startX - this.currentX);
     this.sideNavContainerEl.value.style.transform = "";
-    console.log(translateX, this.currentX, this.startX);
+
     if (translateX < 0) {
       this.hideSideNav();
     }
