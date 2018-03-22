@@ -7,23 +7,6 @@ import BurgerBtn from "../Menu/BurgerBtn";
 import AddNewBtn from "../Menu/AddNewBtn";
 
 class Navigation extends Component {
-  menu = {
-    selected: 0,
-    items: [
-      {
-        title: "1",
-        link: "/page/2",
-        icon: "3",
-        className: "4"
-      },
-      {
-        title: "10",
-        link: "/page/20",
-        icon: "30",
-        className: "40"
-      }
-    ]
-  };
   sideNavEl = React.createRef();
   addNewEl = React.createRef();
   sideNavTitle = React.createRef();
@@ -65,12 +48,12 @@ class Navigation extends Component {
         </div>
         <SideNav
           menu={this.menu}
-          // hideSideNav={this.hideSideNav}
+          componentName="Menu"
           sideNavEl={this.sideNavEl}
         />
         <SideNav
           position="right"
-          // hideSideNav={this.hideSideNav}
+          componentName="AddForm"
           sideNavEl={this.addNewEl}
         />
       </header>
