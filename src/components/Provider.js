@@ -90,6 +90,11 @@ class MyProvider extends Component {
             books[key] = updatedBook;
             this.setState({ books });
           },
+          addBook: book => {
+            const books = { ...this.state.books };
+            books[`book${Date.now()}`] = book;
+            this.setState({ books });
+          },
           reloadBooks: books => {
             this.setState({ books });
           },
