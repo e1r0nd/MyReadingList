@@ -14,14 +14,21 @@ class AddForm extends Component {
   titleRef = React.createRef();
   quoteRef = React.createRef();
 
-  createBook = () => ({
-    author: this.authorRef.value.value,
-    date: this.dateRef.value.value,
-    mark: this.markRef.value.value,
-    tag: this.tagRef.value.value,
-    title: this.titleRef.value.value,
-    quote: this.quoteRef.value.value
-  });
+  createBook = (e, cb) => {
+    const book = {
+      author: this.authorRef.value.value,
+      date: this.dateRef.value.value,
+      mark: this.markRef.value.value,
+      tag: this.tagRef.value.value,
+      title: this.titleRef.value.value,
+      quote: this.quoteRef.value.value
+    };
+
+    e.preventDefault();
+    cb(book);
+    this.props.hideSideNav();
+    e.currentTarget.reset();
+  };
 
   render() {
     return (
@@ -30,10 +37,7 @@ class AddForm extends Component {
           <form
             className="fish-edit"
             onSubmit={e => {
-              e.preventDefault();
-              ctx.addBook(this.createBook());
-              this.props.hideSideNav();
-              e.currentTarget.reset();
+              this.createBook(e, ctx.addBook);
             }}
           >
             <input
