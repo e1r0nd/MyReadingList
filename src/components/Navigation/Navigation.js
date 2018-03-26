@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-// import PropTypes from "prop-types";
 import "./Navigation.css";
-// import Menu from "../Menu/Menu";
+import { MyContext } from "../Provider";
 import SideNav from "../Menu/SideNav";
 import BurgerBtn from "../Menu/BurgerBtn";
 import AddNewBtn from "../Menu/AddNewBtn";
@@ -30,33 +29,41 @@ class Navigation extends Component {
 
   render() {
     return (
-      <header>
-        <div className="header">
-          <BurgerBtn
-            showSideNav={this.showSideNav}
-            element={this.sideNavEl}
-            className="header__itm"
-          />
-          <span ref={this.sideNavTitle} className="side-nav__title header__itm">
-            Books
-          </span>
-          <AddNewBtn
-            showSideNav={this.showSideNav}
-            element={this.addNewEl}
-            className="header__itm"
-          />
-        </div>
-        <SideNav
-          menu={this.menu}
-          componentName="Menu"
-          sideNavEl={this.sideNavEl}
-        />
-        <SideNav
-          position="right"
-          componentName="AddForm"
-          sideNavEl={this.addNewEl}
-        />
-      </header>
+      <MyContext.Consumer>
+        {ctx => (
+          <header>
+            <div className="header">
+              <BurgerBtn
+                showSideNav={this.showSideNav}
+                element={this.sideNavEl}
+              />
+              <span
+                ref={this.sideNavTitle}
+                className="side-nav__title header__itm"
+              >
+                Books
+              </span>
+              <AddNewBtn
+                showSideNav={this.showSideNav}
+                element={this.addNewEl}
+                context={ctx}
+                componentName="BookForm"
+              />
+            </div>
+            <SideNav
+              menu={this.menu}
+              componentName="Menu"
+              sideNavEl={this.sideNavEl}
+            />
+            <SideNav
+              position="right"
+              componentName="BookForm"
+              sideNavEl={this.addNewEl}
+              context={ctx}
+            />
+          </header>
+        )}
+      </MyContext.Consumer>
     );
   }
 }

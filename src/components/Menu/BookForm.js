@@ -2,9 +2,10 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { MyContext } from "../Provider";
 
-class AddForm extends Component {
+class BookForm extends Component {
   static propTypes = {
-    hideSideNav: PropTypes.func
+    hideSideNav: PropTypes.func.isRequired,
+    context: PropTypes.object
   };
 
   authorRef = React.createRef();
@@ -14,7 +15,7 @@ class AddForm extends Component {
   titleRef = React.createRef();
   quoteRef = React.createRef();
 
-  createBook = (e, cb) => {
+  sumbitBook = (e, cb) => {
     const book = {
       author: this.authorRef.value.value,
       date: this.dateRef.value.value,
@@ -28,6 +29,16 @@ class AddForm extends Component {
     cb(book);
     this.props.hideSideNav();
     e.currentTarget.reset();
+    this.props.context.setCurrentBook();
+  };
+
+  handleChange = event => {
+    const updatedBook = {
+      ...this.props.context.state.currentBook,
+      [event.currentTarget.name]: event.currentTarget.value
+    };
+
+    this.props.context.changeBook(updatedBook);
   };
 
   render() {
@@ -35,9 +46,12 @@ class AddForm extends Component {
       <MyContext.Consumer>
         {ctx => (
           <form
-            className="fish-edit"
+            className=""
             onSubmit={e => {
-              this.createBook(e, ctx.addBook);
+              this.sumbitBook(
+                e,
+                ctx[ctx.state.currentBook.title ? "updateBook" : "addBook"]
+              );
             }}
           >
             <input
@@ -45,21 +59,31 @@ class AddForm extends Component {
               ref={this.titleRef}
               type="text"
               placeholder="Title"
+              value={ctx.state.currentBook.title || ""}
+              onChange={this.handleChange}
             />
-
             <input
               name="author"
               ref={this.authorRef}
               type="text"
               placeholder="Author"
+              value={ctx.state.currentBook.author || ""}
+              onChange={this.handleChange}
             />
             <input
               name="date"
               ref={this.dateRef}
               type="text"
               placeholder="Date"
+              value={ctx.state.currentBook.date || ""}
+              onChange={this.handleChange}
             />
-            <select name="mark" ref={this.markRef}>
+            <select
+              name="mark"
+              ref={this.markRef}
+              value={ctx.state.currentBook.mark || ""}
+              onChange={this.handleChange}
+            >
               <option value="1">Too Bad</option>
               <option value="2">OK!</option>
               <option value="3">Interesting</option>
@@ -67,13 +91,26 @@ class AddForm extends Component {
               <option value="5">Want to read</option>
               <option value="6">Reading now</option>
             </select>
-            <select name="tag" ref={this.tagRef}>
+            <select
+              name="tag"
+              ref={this.tagRef}
+              value={ctx.state.currentBook.tag || ""}
+              onChange={this.handleChange}
+            >
               <option value="1">&nbsp;</option>
               <option value="2">entertaining</option>
               <option value="3">education</option>
             </select>
-            <textarea name="quote" ref={this.quoteRef} placeholder="Quote" />
-            <button type="submit">Add Book</button>
+            <textarea
+              name="quote"
+              ref={this.quoteRef}
+              placeholder="Quote"
+              value={ctx.state.currentBook.quote || ""}
+              onChange={this.handleChange}
+            />
+            <button type="submit">
+              {ctx.state.currentBook.title ? "Save" : "Add"} Book
+            </button>
           </form>
         )}
       </MyContext.Consumer>
@@ -81,4 +118,4 @@ class AddForm extends Component {
   }
 }
 
-export default AddForm;
+export default BookForm;

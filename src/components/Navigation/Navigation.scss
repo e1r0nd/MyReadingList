@@ -1,10 +1,11 @@
 @import "../../styles/mixin";
+@import "../../styles/variables";
 $header-background: #34495e;
 $header-shadow: rgba(0, 0, 0, 0.3);
 $header-hero-background: #222;
 $header-hero-shadow: rgba(0, 0, 0, 0.6);
 $title-color: #fff;
-$link-hover-background: #ecf0f1;
+$link-hover-background: $linksHoverBackground;
 $curve-transition: cubic-bezier(0, 0, 0.3, 1);
 
 .btn {
@@ -45,7 +46,6 @@ $curve-transition: cubic-bezier(0, 0, 0.3, 1);
   border: none;
   color: $title-color;
   height: 24px;
-
   @include cursor-pointer;
   margin: 0;
   padding: 0;

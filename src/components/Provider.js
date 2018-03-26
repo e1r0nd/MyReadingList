@@ -13,6 +13,17 @@ class MyProvider extends Component {
 
   state = {
     books: {},
+    currentBook: {
+      author: "",
+      date: "",
+      mark: "",
+      order: "",
+      tag: "",
+      title: "",
+      quote: ""
+    },
+    currentIndex: "",
+    sideNavs: {},
     uid: "",
     userName: ""
   };
@@ -36,61 +47,40 @@ class MyProvider extends Component {
     });
   };
 
-  // bookService = {
-  //   updateBook: (key, updatedBook) => {
-  //     const books = { ...this.state.books };
-  //     books[key] = updatedBook;
-  //     this.setState({ books });
-  //   },
-
-  //   reloadBooks: books => {
-  //     this.setState({ books });
-  //   },
-
-  //   loadLocalBooks: () => {
-  //     // https://www.npmjs.com/package/idb-keyval
-  //     idbKeyval.get("localBooks").then(idbKeyvalRef => {
-  //       const books = idbKeyvalRef ? idbKeyvalRef : sampleBooks;
-
-  //       // eslint-disable-next-line
-  //       this.setState({ books });
-  //       if (!idbKeyvalRef) {
-  //         idbKeyval.set("localBooks", books);
-  //       }
-  //     });
-  //   },
-
-  //   syncStart: () => {
-  //     console.log(this.state.uid);
-  //     this.ref = base.syncState(`${this.state.uid}`, {
-  //       context: this,
-  //       state: "books"
-  //     });
-  //   },
-
-  //   syncStop: () => {
-  //     base.removeBinding(this.ref);
-  //   }
-  // };
-
-  // userService = {
-  //   setUserId: (uid, userName) => {
-  //     uid && this.setState({ uid });
-  //     userName && this.setState({ userName });
-  //   }
-  // };
-
   render() {
     return (
       <MyContext.Provider
         value={{
           state: this.state,
-          updateBook: (key, updatedBook) => {
+          setSideNav: (name, state) => {
+            this.setState({ [name]: state });
+          },
+          setCurrentBook: (currentIndex = "") => {
+            const emptyBook = {
+              author: "",
+              date: "",
+              mark: "",
+              order: "",
+              tag: "",
+              title: "",
+              quote: ""
+            };
+            const currentBook = this.state.books[currentIndex] || emptyBook;
+            this.setState({ currentBook });
+            this.setState({ currentIndex });
+          },
+          changeBook: currentBook => {
+            console.log("change");
+            this.setState({ currentBook });
+          },
+          updateBook: updatedBook => {
+            console.log("update");
             const books = { ...this.state.books };
-            books[key] = updatedBook;
+            books[this.state.currentIndex] = updatedBook;
             this.setState({ books });
           },
           addBook: book => {
+            console.log("add");
             const books = { ...this.state.books };
             books[`book${Date.now()}`] = book;
             this.setState({ books });

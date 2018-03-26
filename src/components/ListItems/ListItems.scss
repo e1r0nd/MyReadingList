@@ -21,4 +21,7 @@
     color: $grayText;
     margin: 0;
   }
+  &:hover {
+    background-color: $linksHoverBackground;
+  }
 }

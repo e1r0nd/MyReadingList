@@ -14,12 +14,7 @@ class Router extends Component {
     return (
       <Fragment>
         <MyProvider>
-          <Navigation
-          // {...this.state}
-          // syncStart={this.syncStart}
-          // bookService={this.bookService}
-          // userService={this.userService}
-          />
+          <Navigation />
           <main className="main">
             <BrowserRouter>
               <Switch>

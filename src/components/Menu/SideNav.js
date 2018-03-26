@@ -1,22 +1,28 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import Menu from "./Menu";
-import AddForm from "./AddForm";
+import BookForm from "./BookForm";
 
 class SideNav extends Component {
   static propTypes = {
     position: PropTypes.string,
     componentName: PropTypes.string.isRequired,
-    sideNavEl: PropTypes.object.isRequired
+    sideNavEl: PropTypes.object.isRequired,
+    context: PropTypes.object
   };
 
   static defaultProps = {
     position: "left"
   };
 
+  componentDidMount() {
+    this.props.context &&
+      this.props.context.setSideNav(this.props.componentName, false);
+  }
+
   components = {
     Menu,
-    AddForm
+    BookForm
   };
 
   hideSideNav = () => {
@@ -26,6 +32,8 @@ class SideNav extends Component {
       "transitionend",
       this.onTransitionEnd
     );
+    "BookForm" === this.props.componentName &&
+      this.props.context.setCurrentBook();
   };
 
   onTransitionEnd = e => {
@@ -142,7 +150,10 @@ class SideNav extends Component {
                 />
               </svg>
             </button>
-            <SpecificComponent hideSideNav={this.hideSideNav} />
+            <SpecificComponent
+              hideSideNav={this.hideSideNav}
+              context={this.props.context}
+            />
           </nav>
         </aside>
       </Fragment>
