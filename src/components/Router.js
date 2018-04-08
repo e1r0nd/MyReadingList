@@ -24,7 +24,8 @@ class Router extends Component {
                   // component={addPropsToRoute(ListItems, passingProps)}
                   component={ListItems}
                 />
-                <Route path="/page/:pageId" component={App} />
+                <Route exact path="/book/:viewId" component={ListItems} />
+                <Route exact path="/page/:pageId" component={App} />
                 <Route component={NotFound} />
               </Switch>
             </BrowserRouter>

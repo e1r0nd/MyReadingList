@@ -15,16 +15,34 @@ class Menu extends Component {
     selected: 0,
     items: [
       {
-        title: "1",
-        link: "/page/2",
-        icon: "3",
-        className: "4"
+        title: "Wishlist",
+        link: "/",
+        icon: "list",
+        className: ""
       },
       {
-        title: "10",
-        link: "/page/20",
-        icon: "30",
-        className: "40"
+        title: "Read",
+        link: "/book/read",
+        icon: "book",
+        className: ""
+      },
+      {
+        title: "Favorites",
+        link: "/book/favorites",
+        icon: "favorite",
+        className: ""
+      },
+      {
+        title: "Done",
+        link: "/book/done",
+        icon: "done",
+        className: ""
+      },
+      {
+        title: "Blamelist",
+        link: "/book/blamelist",
+        icon: "block",
+        className: ""
       }
     ]
   };

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { BrowserRouter, Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
 class MenuItem extends Component {
@@ -15,17 +16,16 @@ class MenuItem extends Component {
     const { title, link } = this.props.details;
     const { selected, index } = this.props;
     return (
-      <li>
-        <a
-          id={`${title}Nav`}
-          className={`side-nav__lnk${selected === index ? " active" : ""}`}
-          data-type="nav-select"
-          data-title={title}
-          href={link}
-        >
-          <span>{title}</span>
-        </a>
-      </li>
+      <BrowserRouter>
+        <li>
+          <Link
+            className={`side-nav__lnk${selected === index ? " active" : ""}`}
+            to={link}
+          >
+            {title}
+          </Link>
+        </li>
+      </BrowserRouter>
     );
   }
 }
