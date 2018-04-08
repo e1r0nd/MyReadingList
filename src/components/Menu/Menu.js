@@ -6,10 +6,15 @@ import Login from "./Login";
 
 class Menu extends Component {
   static propTypes = {
-    hideSideNav: PropTypes.func.isRequired
+    hideSideNav: PropTypes.func.isRequired,
+    context: PropTypes.object
   };
 
   componentDidMount() {
+    /*
+    Update title:
+    this.props.context.updateTitle();
+    */
     // Lazy load the background image
     setTimeout(() => {
       this.sideNavHeader.value.classList.add("side-nav__header--lazy-bg");
@@ -17,7 +22,6 @@ class Menu extends Component {
   }
 
   menu = {
-    selected: 0,
     items: [
       {
         title: "Wishlist",

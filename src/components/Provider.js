@@ -12,6 +12,7 @@ class MyProvider extends Component {
   };
 
   state = {
+    title: "Wishlist",
     books: {},
     currentBook: {
       author: "",
@@ -54,6 +55,9 @@ class MyProvider extends Component {
           state: this.state,
           setSideNav: (name, state) => {
             this.setState({ [name]: state });
+          },
+          updateTitle: title => {
+            this.setState({ title });
           },
           setCurrentBook: (currentIndex = "") => {
             const emptyBook = {

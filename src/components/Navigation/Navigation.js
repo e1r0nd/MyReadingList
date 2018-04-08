@@ -41,7 +41,7 @@ class Navigation extends Component {
                 ref={this.sideNavTitle}
                 className="side-nav__title header__itm"
               >
-                Books
+                {ctx.state.title}
               </span>
               <AddNewBtn
                 showSideNav={this.showSideNav}
