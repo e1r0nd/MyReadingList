@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter, Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import PropTypes from "prop-types";
 
 class MenuItem extends Component {
@@ -7,25 +7,23 @@ class MenuItem extends Component {
     details: PropTypes.shape({
       title: PropTypes.string,
       link: PropTypes.string
-    }),
-    selected: PropTypes.number,
-    index: PropTypes.number
+    }).isRequired,
+    hideSideNav: PropTypes.func.isRequired
   };
 
   render() {
     const { title, link } = this.props.details;
-    const { selected, index } = this.props;
+
     return (
-      <BrowserRouter>
-        <li>
-          <Link
-            className={`side-nav__lnk${selected === index ? " active" : ""}`}
-            to={link}
-          >
-            {title}
-          </Link>
-        </li>
-      </BrowserRouter>
+      <li>
+        <NavLink
+          className="side-nav__lnk"
+          to={link}
+          onClick={this.props.hideSideNav}
+        >
+          {title}
+        </NavLink>
+      </li>
     );
   }
 }

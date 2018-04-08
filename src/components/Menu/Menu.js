@@ -1,9 +1,14 @@
 import React, { Component, Fragment } from "react";
+import PropTypes from "prop-types";
 import { MyContext } from "../Provider";
 import MenuItem from "./MenuItem";
 import Login from "./Login";
 
 class Menu extends Component {
+  static propTypes = {
+    hideSideNav: PropTypes.func.isRequired
+  };
+
   componentDidMount() {
     // Lazy load the background image
     setTimeout(() => {
@@ -16,7 +21,7 @@ class Menu extends Component {
     items: [
       {
         title: "Wishlist",
-        link: "/",
+        link: "/book/wishlist",
         icon: "list",
         className: ""
       },
@@ -43,6 +48,12 @@ class Menu extends Component {
         link: "/book/blamelist",
         icon: "block",
         className: ""
+      },
+      {
+        title: "Statistics",
+        link: "/stats",
+        icon: "stats",
+        className: ""
       }
     ]
   };
@@ -67,8 +78,7 @@ class Menu extends Component {
             <MenuItem
               key={i}
               details={x}
-              selected={this.menu.selected}
-              index={i}
+              hideSideNav={this.props.hideSideNav}
             />
           ))}
         </ul>

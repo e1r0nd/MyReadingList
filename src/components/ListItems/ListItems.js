@@ -4,6 +4,13 @@ import Item from "./Item";
 import "./ListItems.css";
 
 class ListItems extends Component {
+  static getDerivedStateFromProps(nextProps, prevState) {
+    console.log(nextProps.match.params.viewId);
+    return Object.assign(nextProps, ...prevState);
+  }
+
+  state = {};
+
   render() {
     return (
       <MyContext.Consumer>

@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { Redirect } from "react-router";
 import ListItems from "./ListItems/ListItems";
 import App from "./App/App";
 import NotFound from "./NotFound";
@@ -10,26 +11,31 @@ import MyProvider from "./Provider";
 
 class Router extends Component {
   render() {
-    // const passingProps = { books: this.state.books };
+    // const passingProps = { location: this.location };
     return (
       <Fragment>
         <MyProvider>
-          <Navigation />
-          <main className="main">
-            <BrowserRouter>
-              <Switch>
-                <Route
-                  exact
-                  path="/"
-                  // component={addPropsToRoute(ListItems, passingProps)}
-                  component={ListItems}
-                />
-                <Route exact path="/book/:viewId" component={ListItems} />
-                <Route exact path="/page/:pageId" component={App} />
-                <Route component={NotFound} />
-              </Switch>
-            </BrowserRouter>
-          </main>
+          <BrowserRouter>
+            <Fragment>
+              <Navigation />
+              <main className="main">
+                <Switch>
+                  <Route
+                    exact
+                    path="/"
+                    render={() => <Redirect to="/book/wishlist" />}
+                  />
+                  <Route
+                    path="/book/:viewId"
+                    // component={addPropsToRoute(ListItems, passingProps)}
+                    component={ListItems}
+                  />
+                  <Route path="/stats" component={App} />
+                  <Route component={NotFound} />
+                </Switch>
+              </main>
+            </Fragment>
+          </BrowserRouter>
           <Footer />
         </MyProvider>
       </Fragment>

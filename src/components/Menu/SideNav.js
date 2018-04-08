@@ -150,10 +150,7 @@ class SideNav extends Component {
                 />
               </svg>
             </button>
-            <SpecificComponent
-              hideSideNav={this.hideSideNav}
-              context={this.props.context}
-            />
+            <SpecificComponent hideSideNav={this.hideSideNav} />
           </nav>
         </aside>
       </Fragment>
