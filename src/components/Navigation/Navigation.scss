@@ -46,6 +46,7 @@ $curve-transition: cubic-bezier(0, 0, 0.3, 1);
   border: none;
   color: $title-color;
   height: 24px;
+
   @include cursor-pointer;
   margin: 0;
   padding: 0;
@@ -159,6 +160,7 @@ $curve-transition: cubic-bezier(0, 0, 0.3, 1);
   height: 48px;
   line-height: 48px;
   padding: 0 16px;
+  text-decoration: none;
 }
 .side-nav__content .side-nav__lnk:hover,
 .side-nav__content .side-nav__lnk:focus {
