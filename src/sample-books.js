@@ -53,7 +53,7 @@ const books = {
   book6: {
     author: "Author C",
     date: "1982-02-13",
-    list: "favorite",
+    list: "favorites",
     mark: "4",
     order: "0",
     tag: "",

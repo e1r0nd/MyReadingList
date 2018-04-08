@@ -17,7 +17,6 @@ class ListItems extends Component {
       <MyContext.Consumer>
         {ctx => (
           <Fragment>
-            viewId={this.state.match.params.viewId}
             {ctx.state.books ? (
               Object.keys(ctx.state.books)
                 .filter(key => currentList === ctx.state.books[key].list)
