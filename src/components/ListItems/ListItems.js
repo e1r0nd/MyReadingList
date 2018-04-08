@@ -12,14 +12,18 @@ class ListItems extends Component {
   state = {};
 
   render() {
+    const currentList = this.state.match.params.viewId;
     return (
       <MyContext.Consumer>
         {ctx => (
           <Fragment>
+            viewId={this.state.match.params.viewId}
             {ctx.state.books ? (
-              Object.keys(ctx.state.books).map(key => (
-                <Item key={key} book={ctx.state.books[key]} index={key} />
-              ))
+              Object.keys(ctx.state.books)
+                .filter(key => currentList === ctx.state.books[key].list)
+                .map(key => (
+                  <Item key={key} book={ctx.state.books[key]} index={key} />
+                ))
             ) : (
               <p>Nothing is here</p>
             )}
