@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import { MyContext } from "../Provider";
 import Item from "./Item";
 import "./ListItems.css";
@@ -17,7 +17,7 @@ class ListItems extends Component {
     return (
       <MyContext.Consumer>
         {ctx => (
-          <Fragment>
+          <ul className="main__list">
             {!ctx.state.title && ctx.updateTitle(capsСurrentList)}
             {ctx.state.books ? (
               Object.keys(ctx.state.books)
@@ -28,7 +28,7 @@ class ListItems extends Component {
             ) : (
               <p>Nothing is here</p>
             )}
-          </Fragment>
+          </ul>
         )}
       </MyContext.Consumer>
     );

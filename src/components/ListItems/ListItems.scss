@@ -1,6 +1,10 @@
 @import "../../styles/mixin";
 @import "../../styles/variables";
 
+.main__list {
+  margin: 0;
+  padding: 0;
+}
 .list-item {
   border-bottom: 1px solid $borderColor;
   font-size: 21px;
