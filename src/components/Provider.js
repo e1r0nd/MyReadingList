@@ -12,7 +12,7 @@ class MyProvider extends Component {
   };
 
   state = {
-    title: "Wishlist",
+    title: "",
     books: {},
     currentBook: {
       author: "",

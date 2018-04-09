@@ -8,8 +8,14 @@ class MenuItem extends Component {
       title: PropTypes.string,
       link: PropTypes.string
     }).isRequired,
-    hideSideNav: PropTypes.func.isRequired
+    hideSideNav: PropTypes.func.isRequired,
+    ctx: PropTypes.object
   };
+
+  handleNavClick(e) {
+    this.props.ctx.updateTitle(e.target.text);
+    this.props.hideSideNav();
+  }
 
   render() {
     const { title, link } = this.props.details;
@@ -19,7 +25,7 @@ class MenuItem extends Component {
         <NavLink
           className="side-nav__lnk"
           to={link}
-          onClick={this.props.hideSideNav}
+          onClick={this.handleNavClick.bind(this)}
         >
           {title}
         </NavLink>

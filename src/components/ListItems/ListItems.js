@@ -5,7 +5,6 @@ import "./ListItems.css";
 
 class ListItems extends Component {
   static getDerivedStateFromProps(nextProps, prevState) {
-    console.log(nextProps.match.params.viewId);
     return Object.assign(nextProps, ...prevState);
   }
 
@@ -13,10 +12,13 @@ class ListItems extends Component {
 
   render() {
     const currentList = this.state.match.params.viewId;
+    const capsСurrentList = currentList[0].toUpperCase() + currentList.slice(1);
+
     return (
       <MyContext.Consumer>
         {ctx => (
           <Fragment>
+            {!ctx.state.title && ctx.updateTitle(capsСurrentList)}
             {ctx.state.books ? (
               Object.keys(ctx.state.books)
                 .filter(key => currentList === ctx.state.books[key].list)
