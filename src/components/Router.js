@@ -6,12 +6,10 @@ import App from "./App/App";
 import NotFound from "./NotFound";
 import Navigation from "../components/Navigation/Navigation";
 import Footer from "../components/Footer/Footer";
-// import addPropsToRoute from "./AddPropsToRoute";
 import MyProvider from "./Provider";
 
 class Router extends Component {
   render() {
-    // const passingProps = { location: this.location };
     return (
       <Fragment>
         <MyProvider>
@@ -25,11 +23,7 @@ class Router extends Component {
                     path="/"
                     render={() => <Redirect to="/book/wishlist" />}
                   />
-                  <Route
-                    path="/book/:viewId"
-                    // component={addPropsToRoute(ListItems, passingProps)}
-                    component={ListItems}
-                  />
+                  <Route path="/book/:viewId" component={ListItems} />
                   <Route path="/stats" component={App} />
                   <Route component={NotFound} />
                 </Switch>
