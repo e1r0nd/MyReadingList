@@ -4,6 +4,7 @@ import { MyContext } from "../Provider";
 import SideNav from "../Menu/SideNav";
 import BurgerBtn from "../Menu/BurgerBtn";
 import AddNewBtn from "../Menu/AddNewBtn";
+import SearchBtn from "../Menu/SearchBtn";
 
 class Navigation extends Component {
   sideNavEl = React.createRef();
@@ -43,6 +44,11 @@ class Navigation extends Component {
               >
                 {ctx.state.title}
               </span>
+              <SearchBtn
+                showSearchBar={this.showSearchNav}
+                element={this.searchEl}
+                context={ctx}
+              />
               <AddNewBtn
                 showSideNav={this.showSideNav}
                 element={this.addNewEl}

@@ -33,12 +33,10 @@ class Item extends Component {
               this.openEditForm(ctx);
             }}
           >
-            <span className="list-item__title">&laquo;{title}&raquo;</span>.
-            <span className="list-item__author">{author}</span>
-            <span>{tag}</span>
-            <span>{mark}</span>
-            <p className="list-item__date">{date}</p>
-            <span>{order}</span>
+            <span className="list-item__title">&laquo;{title}&raquo;</span>.{" "}
+            <span className="list-item__author">{author}</span>{" "}
+            <span>{tag}</span> <span>{mark}</span>{" "}
+            <p className="list-item__date">{date}</p> <span>{order}</span>{" "}
             <p>{quote}</p>
           </li>
         )}
