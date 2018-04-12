@@ -65,7 +65,7 @@ class Menu extends Component {
           <Fragment>
             <div className="side-nav__mock-bg">
               <header className="side-nav__header" ref={this.sideNavHeader}>
-                <span>{ctx.userName || "Anonymous"}</span>
+                <span>{ctx.state.userName || "Anonymous"}</span>
                 <Login />
               </header>
             </div>

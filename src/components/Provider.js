@@ -1,8 +1,9 @@
 import React, { Component, createContext } from "react";
 import idbKeyval from "idb-keyval";
 import PropTypes from "prop-types";
+import firebase from "firebase";
 import sampleBooks from "../sample-books";
-import base from "../base";
+import base, { firebaseApp } from "../base";
 
 export const MyContext = createContext();
 
@@ -32,6 +33,12 @@ class MyProvider extends Component {
 
   componentDidMount() {
     this.loadLocalBooks();
+
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        this.authHandler({ user });
+      }
+    });
   }
 
   componentDidUpdate() {
@@ -47,6 +54,49 @@ class MyProvider extends Component {
         idbKeyval.set("localBooks", books);
       }
     });
+  };
+
+  reloadBooks = books => {
+    this.setState({ books });
+  };
+
+  authHandler = async authData => {
+    this.setUserId(authData.user.uid, authData.user.displayName);
+    const books = await base.fetch(authData.user.uid, { context: this });
+    await this.reloadBooks(books);
+    await this.syncStart();
+  };
+
+  syncStart = () => {
+    console.log(this.state.uid);
+    this.ref = base.syncState(`${this.state.uid}`, {
+      context: this,
+      state: "books"
+    });
+  };
+
+  syncStop = () => {
+    base.removeBinding(this.ref);
+  };
+
+  authenticate = () => {
+    const authProvider = new firebase.auth.FacebookAuthProvider();
+    firebaseApp
+      .auth()
+      .signInWithPopup(authProvider)
+      .then(this.authHandler);
+  };
+
+  setUserId = (uid, userName) => {
+    uid && this.setState({ uid });
+    userName && this.setState({ userName });
+  };
+
+  logout = async () => {
+    await firebase.auth().signOut();
+    await this.setUserId("", "");
+    await this.syncStop();
+    await this.reloadBooks();
   };
 
   render() {
@@ -69,7 +119,6 @@ class MyProvider extends Component {
               date: "",
               mark: "",
               order: "",
-              tag: "",
               title: "",
               quote: ""
             };
@@ -93,25 +142,11 @@ class MyProvider extends Component {
             books[`book${Date.now()}`] = book;
             this.setState({ books });
           },
-          reloadBooks: books => {
-            this.setState({ books });
-          },
           loadLocalBooks: () => {
             this.loadLocalBooks();
           },
-          syncStart: () => {
-            console.log(this.state.uid);
-            this.ref = base.syncState(`${this.state.uid}`, {
-              context: this,
-              state: "books"
-            });
-          },
-          syncStop: () => {
-            base.removeBinding(this.ref);
-          },
-          setUserId: (uid, userName) => {
-            uid && this.setState({ uid });
-            userName && this.setState({ userName });
+          LogInOut: () => {
+            this.state.uid ? this.logout() : this.authenticate();
           }
         }}
       >
