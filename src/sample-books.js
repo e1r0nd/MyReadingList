@@ -5,7 +5,6 @@ const books = {
     list: "wishlist",
     mark: "5",
     order: "1",
-    tag: "fiction",
     title: "New Book",
     quote:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore."
@@ -16,7 +15,6 @@ const books = {
     list: "wishlist",
     mark: "5",
     order: "2",
-    tag: "education",
     title: "PersonalBookShelf",
     quote: ""
   },
@@ -26,7 +24,6 @@ const books = {
     list: "wishlist",
     mark: "5",
     order: "3",
-    tag: "education",
     title: "Old book",
     quote: ""
   },
@@ -36,7 +33,6 @@ const books = {
     list: "wishlist",
     mark: "5",
     order: "4",
-    tag: "",
     title: "Someday read this",
     quote: ""
   },
@@ -46,7 +42,6 @@ const books = {
     list: "read",
     mark: "0",
     order: "0",
-    tag: "entertainment",
     title: "Good book",
     quote: ""
   },
@@ -56,7 +51,6 @@ const books = {
     list: "favorites",
     mark: "4",
     order: "0",
-    tag: "",
     title: "This is the best one",
     quote: ""
   },
@@ -66,7 +60,6 @@ const books = {
     list: "done",
     mark: "1",
     order: "0",
-    tag: "",
     title: "The cat-book",
     quote: ""
   },
@@ -76,7 +69,6 @@ const books = {
     list: "done",
     mark: "2",
     order: "0",
-    tag: "entertainment",
     title: "The dog-book",
     quote: ""
   },
@@ -86,7 +78,6 @@ const books = {
     list: "done",
     mark: "3",
     order: "0",
-    tag: "education",
     title: "The bird-book",
     quote: ""
   },
@@ -96,7 +87,6 @@ const books = {
     list: "blamelist",
     mark: "6",
     order: "0",
-    tag: "entertainment",
     title: "The worst book",
     quote: ""
   }

@@ -5,7 +5,6 @@ import "./ListItems.css";
 
 class ListItems extends Component {
   static getDerivedStateFromProps(nextProps, prevState) {
-    console.log(nextProps);
     return Object.assign(nextProps, ...prevState);
   }
 

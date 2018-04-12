@@ -11,7 +11,6 @@ class Item extends Component {
       mark: PropTypes.string,
       order: PropTypes.string,
       type: PropTypes.string,
-      tag: PropTypes.string,
       title: PropTypes.string,
       quote: PropTypes.string
     })
@@ -22,7 +21,7 @@ class Item extends Component {
   };
 
   render() {
-    const { author, date, mark, order, tag, title, quote } = this.props.book;
+    const { author, date, mark, order, title, quote } = this.props.book;
 
     return (
       <MyContext.Consumer>
@@ -35,9 +34,8 @@ class Item extends Component {
           >
             <span className="list-item__title">&laquo;{title}&raquo;</span>.{" "}
             <span className="list-item__author">{author}</span>{" "}
-            <span>{tag}</span> <span>{mark}</span>{" "}
-            <p className="list-item__date">{date}</p> <span>{order}</span>{" "}
-            <p>{quote}</p>
+            <span>{mark}</span> <p className="list-item__date">{date}</p>{" "}
+            <span>{order}</span> <p>{quote}</p>
           </li>
         )}
       </MyContext.Consumer>

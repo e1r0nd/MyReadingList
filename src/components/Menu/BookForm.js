@@ -11,7 +11,6 @@ class BookForm extends Component {
   authorRef = React.createRef();
   dateRef = React.createRef();
   markRef = React.createRef();
-  tagRef = React.createRef();
   titleRef = React.createRef();
   quoteRef = React.createRef();
 
@@ -20,7 +19,6 @@ class BookForm extends Component {
       author: this.authorRef.value.value,
       date: this.dateRef.value.value,
       mark: this.markRef.value.value,
-      tag: this.tagRef.value.value,
       title: this.titleRef.value.value,
       quote: this.quoteRef.value.value
     };
@@ -90,16 +88,6 @@ class BookForm extends Component {
               <option value="4">Like it!</option>
               <option value="5">Want to read</option>
               <option value="6">Reading now</option>
-            </select>
-            <select
-              name="tag"
-              ref={this.tagRef}
-              value={ctx.state.currentBook.tag || ""}
-              onChange={this.handleChange}
-            >
-              <option value="1">&nbsp;</option>
-              <option value="2">entertaining</option>
-              <option value="3">education</option>
             </select>
             <textarea
               name="quote"
