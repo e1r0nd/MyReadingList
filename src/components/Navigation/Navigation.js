@@ -5,6 +5,7 @@ import SideNav from "../Menu/SideNav";
 import BurgerBtn from "../Menu/BurgerBtn";
 import AddNewBtn from "../Menu/AddNewBtn";
 import SearchBtn from "../Menu/SearchBtn";
+import Search from "../Menu/Search";
 
 class Navigation extends Component {
   sideNavEl = React.createRef();
@@ -74,14 +75,7 @@ class Navigation extends Component {
               context={ctx}
             />
             <div className="header search-bar" ref={this.searchBarRef}>
-              <form>
-                <input
-                  name=""
-                  ref={this.searchRef}
-                  type="text"
-                  placeholder="Search..."
-                />
-              </form>
+              <Search showSearchBar={this.showSearchBar} />
             </div>
           </header>
         )}

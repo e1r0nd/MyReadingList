@@ -14,6 +14,7 @@ class MyProvider extends Component {
   state = {
     title: "",
     books: {},
+    query: "",
     currentBook: {
       author: "",
       date: "",

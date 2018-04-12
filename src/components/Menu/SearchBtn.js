@@ -3,9 +3,7 @@ import PropTypes from "prop-types";
 
 class SearchBtn extends Component {
   static propTypes = {
-    showSearchBar: PropTypes.func,
-    element: PropTypes.object,
-    context: PropTypes.object
+    showSearchBar: PropTypes.func.isRequired
   };
 
   render() {
