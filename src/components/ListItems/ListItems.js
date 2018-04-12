@@ -19,18 +19,19 @@ class ListItems extends Component {
       <MyContext.Consumer>
         {ctx => (
           <ul className="main__list">
-            ctx.state.query = {ctx.state.query}
             {!ctx.state.title && ctx.updateTitle(capsСurrentList)}
             {ctx.state.books ? (
               Object.keys(ctx.state.books)
-                .filter(
-                  key =>
-                    currentList === ctx.state.books[key].list ||
-                    (ctx.state.query &&
-                      (ctx.state.books[key].title.includes(ctx.state.query) ||
-                        ctx.state.books[key].author.includes(ctx.state.query) ||
-                        ctx.state.books[key].quote.includes(ctx.state.query)))
-                )
+                .filter(key => {
+                  const query = ctx.state.query.toLowerCase();
+                  const { title, author, quote, list } = ctx.state.books[key];
+
+                  return ctx.state.query.length > 1
+                    ? title.toLowerCase().includes(query) ||
+                        author.toLowerCase().includes(query) ||
+                        quote.toLowerCase().includes(query)
+                    : currentList === list;
+                })
                 .map(key => (
                   <Item key={key} book={ctx.state.books[key]} index={key} />
                 ))

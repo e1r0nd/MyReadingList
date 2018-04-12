@@ -4,13 +4,20 @@ import { MyContext } from "../Provider";
 
 class Search extends Component {
   static propTypes = {
-    showSearchBar: PropTypes.func.isRequired
+    showSearchBar: PropTypes.func.isRequired,
+    searchField: PropTypes.object
   };
 
-  searchQuery = React.createRef();
-
   handleSearch = context => {
-    context.updateQuery(this.searchQuery.value.value);
+    context.updateQuery(this.props.searchField.value.value);
+  };
+
+  handleKeys = e => {
+    const query = this.props.searchField.value;
+
+    if (27 === e.keyCode) {
+      query.value ? (query.value = "") : this.props.showSearchBar();
+    }
   };
 
   sumbitSearch = e => {
@@ -25,10 +32,11 @@ class Search extends Component {
           <form onSubmit={this.sumbitSearch}>
             <input
               name=""
-              ref={this.searchQuery}
+              ref={this.props.searchField}
               type="text"
               placeholder="Search..."
               onChange={() => this.handleSearch(ctx)}
+              onKeyUp={this.handleKeys}
             />
           </form>
         )}

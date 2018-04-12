@@ -12,6 +12,7 @@ class Navigation extends Component {
   addNewEl = React.createRef();
   sideNavTitle = React.createRef();
   searchBarRef = React.createRef();
+  searchField = React.createRef();
 
   showSideNav = el => {
     el.value.classList.add("side-nav--animatable");
@@ -31,7 +32,11 @@ class Navigation extends Component {
   };
 
   showSearchBar = () => {
-    this.searchBarRef.value.classList.toggle("search-bar-active");
+    const searchBar = this.searchBarRef.value;
+
+    searchBar.classList.toggle("search-bar-active");
+    searchBar.classList.contains("search-bar-active") &&
+      this.searchField.value.focus();
   };
 
   render() {
@@ -50,12 +55,7 @@ class Navigation extends Component {
               >
                 {ctx.state.title}
               </span>
-              <SearchBtn
-                showSearchBar={this.showSearchBar}
-                element={this.searchEl}
-                context={ctx}
-                SearchRef={this.searchRef}
-              />
+              <SearchBtn showSearchBar={this.showSearchBar} />
               <AddNewBtn
                 showSideNav={this.showSideNav}
                 element={this.addNewEl}
@@ -75,7 +75,10 @@ class Navigation extends Component {
               context={ctx}
             />
             <div className="header search-bar" ref={this.searchBarRef}>
-              <Search showSearchBar={this.showSearchBar} />
+              <Search
+                showSearchBar={this.showSearchBar}
+                searchField={this.searchField}
+              />
             </div>
           </header>
         )}
