@@ -10,9 +10,7 @@ class Search extends Component {
   searchQuery = React.createRef();
 
   handleSearch = context => {
-    context.state.query = this.searchQuery.value.value;
-    // console.log(this.searchQuery.value.value);
-    console.log(context.state.query);
+    context.updateQuery(this.searchQuery.value.value);
   };
 
   sumbitSearch = e => {

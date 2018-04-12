@@ -60,6 +60,9 @@ class MyProvider extends Component {
           updateTitle: title => {
             this.setState({ title });
           },
+          updateQuery: query => {
+            this.setState({ query });
+          },
           setCurrentBook: (currentIndex = "") => {
             const emptyBook = {
               author: "",

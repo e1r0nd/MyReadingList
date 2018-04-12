@@ -5,6 +5,7 @@ import "./ListItems.css";
 
 class ListItems extends Component {
   static getDerivedStateFromProps(nextProps, prevState) {
+    console.log(nextProps);
     return Object.assign(nextProps, ...prevState);
   }
 
@@ -18,10 +19,18 @@ class ListItems extends Component {
       <MyContext.Consumer>
         {ctx => (
           <ul className="main__list">
+            ctx.state.query = {ctx.state.query}
             {!ctx.state.title && ctx.updateTitle(capsСurrentList)}
             {ctx.state.books ? (
               Object.keys(ctx.state.books)
-                .filter(key => currentList === ctx.state.books[key].list)
+                .filter(
+                  key =>
+                    currentList === ctx.state.books[key].list ||
+                    (ctx.state.query &&
+                      (ctx.state.books[key].title.includes(ctx.state.query) ||
+                        ctx.state.books[key].author.includes(ctx.state.query) ||
+                        ctx.state.books[key].quote.includes(ctx.state.query)))
+                )
                 .map(key => (
                   <Item key={key} book={ctx.state.books[key]} index={key} />
                 ))
