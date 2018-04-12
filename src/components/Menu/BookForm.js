@@ -4,7 +4,8 @@ import { MyContext } from "../Provider";
 
 class BookForm extends Component {
   static propTypes = {
-    hideSideNav: PropTypes.func.isRequired
+    hideSideNav: PropTypes.func.isRequired,
+    context: PropTypes.object
   };
 
   authorRef = React.createRef();
