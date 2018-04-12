@@ -10,6 +10,7 @@ class Navigation extends Component {
   sideNavEl = React.createRef();
   addNewEl = React.createRef();
   sideNavTitle = React.createRef();
+  searchBarRef = React.createRef();
 
   showSideNav = el => {
     el.value.classList.add("side-nav--animatable");
@@ -28,12 +29,16 @@ class Navigation extends Component {
     }
   };
 
+  showSearchBar = () => {
+    this.searchBarRef.value.classList.toggle("search-bar-active");
+  };
+
   render() {
     return (
       <MyContext.Consumer>
         {ctx => (
           <header>
-            <div className="header">
+            <div className="header header--over">
               <BurgerBtn
                 showSideNav={this.showSideNav}
                 element={this.sideNavEl}
@@ -45,9 +50,10 @@ class Navigation extends Component {
                 {ctx.state.title}
               </span>
               <SearchBtn
-                showSearchBar={this.showSearchNav}
+                showSearchBar={this.showSearchBar}
                 element={this.searchEl}
                 context={ctx}
+                SearchRef={this.searchRef}
               />
               <AddNewBtn
                 showSideNav={this.showSideNav}
@@ -67,6 +73,16 @@ class Navigation extends Component {
               sideNavEl={this.addNewEl}
               context={ctx}
             />
+            <div className="header search-bar" ref={this.searchBarRef}>
+              <form>
+                <input
+                  name=""
+                  ref={this.searchRef}
+                  type="text"
+                  placeholder="Search..."
+                />
+              </form>
+            </div>
           </header>
         )}
       </MyContext.Consumer>

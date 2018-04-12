@@ -4,6 +4,7 @@ $header-background: #34495e;
 $header-shadow: rgba(0, 0, 0, 0.3);
 $header-hero-background: #222;
 $header-hero-shadow: rgba(0, 0, 0, 0.6);
+$search-background: #fff;
 $title-color: #fff;
 $link-hover-background: $linksHoverBackground;
 $curve-transition: cubic-bezier(0, 0, 0.3, 1);
@@ -34,6 +35,10 @@ $curve-transition: cubic-bezier(0, 0, 0.3, 1);
   position: fixed;
   top: 0;
   width: 100%;
+
+  &--over {
+    z-index: 100;
+  }
 }
 
 .header__itm {
@@ -172,4 +177,12 @@ $curve-transition: cubic-bezier(0, 0, 0.3, 1);
 .active,
 .selected {
   font-weight: bold;
+}
+.search-bar {
+  background: #fff;
+  transform: translateY(0%);
+  transition: transform 0.5s;
+  &.search-bar-active {
+    transform: translateY(100%);
+  }
 }

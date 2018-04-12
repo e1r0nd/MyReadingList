@@ -6,6 +6,7 @@ import BookForm from "./BookForm";
 class SideNav extends Component {
   static propTypes = {
     position: PropTypes.string,
+    className: PropTypes.string,
     componentName: PropTypes.string.isRequired,
     sideNavEl: PropTypes.object.isRequired,
     context: PropTypes.object
@@ -107,7 +108,7 @@ class SideNav extends Component {
   render() {
     const thisClass = `side-nav${
       "right" === this.props.position ? " side-nav--right" : ""
-    }`;
+    } ${this.props.className}`;
     const containerClass = `side-nav__container${
       "right" === this.props.position ? " side-nav__container--right" : ""
     }`;
