@@ -64,7 +64,7 @@ class MyProvider extends Component {
     idbKeyval.get("localBooks").then(idbKeyvalRef => {
       console.log(sampleBooks);
       const books = idbKeyvalRef ? idbKeyvalRef : sampleBooks;
-      // eslint-disable-next-line
+
       this.setState({ books });
       if (!idbKeyvalRef) {
         idbKeyval.set("localBooks", books);
@@ -107,6 +107,7 @@ class MyProvider extends Component {
     this.setState({ userName });
   };
 
+  // eslint-disable-next-line
   logout = async () => {
     await firebase.auth().signOut();
     await this.setUserId("", "");
