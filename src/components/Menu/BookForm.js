@@ -48,7 +48,7 @@ class BookForm extends Component {
             onSubmit={e => {
               this.sumbitBook(
                 e,
-                ctx[ctx.state.currentBook.title ? "updateBook" : "addBook"]
+                ctx[ctx.state.currentIndex ? "updateBook" : "addBook"]
               );
             }}
           >
@@ -97,7 +97,7 @@ class BookForm extends Component {
               onChange={this.handleChange}
             />
             <button type="submit">
-              {ctx.state.currentBook.title ? "Save" : "Add"} Book
+              {ctx.state.currentIndex ? "Save" : "Add"} Book
             </button>
           </form>
         )}

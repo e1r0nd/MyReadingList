@@ -32,21 +32,37 @@ class MyProvider extends Component {
   };
 
   componentDidMount() {
-    this.loadLocalBooks();
-
     firebase.auth().onAuthStateChanged(user => {
-      if (user) {
-        this.authHandler({ user });
-      }
+      this.setState({ books: "" });
+      user ? this.authHandler({ user }) : this.loadLocalBooks();
     });
   }
 
   componentDidUpdate() {
-    idbKeyval.set("localBooks", this.state.books);
+    if (
+      (this.state.uid && !this.state.userName) ||
+      (!this.state.uid && this.state.userName) ||
+      (this.state.uid && this.state.userName && !this.ref)
+    ) {
+      return;
+    }
+    const dbTitle =
+      this.state.uid && this.state.userName
+        ? this.state.userName.replace(/\s/g, "")
+        : "localBooks";
+
+    console.log(
+      "componentDidUpdate:",
+      dbTitle,
+      Object.keys(this.state.books).length
+    );
+    Object.keys(this.state.books).length &&
+      idbKeyval.set(dbTitle, this.state.books);
   }
 
   loadLocalBooks = () => {
     idbKeyval.get("localBooks").then(idbKeyvalRef => {
+      console.log(sampleBooks);
       const books = idbKeyvalRef ? idbKeyvalRef : sampleBooks;
       // eslint-disable-next-line
       this.setState({ books });
@@ -56,19 +72,17 @@ class MyProvider extends Component {
     });
   };
 
-  reloadBooks = books => {
-    this.setState({ books });
-  };
-
   authHandler = async authData => {
     this.setUserId(authData.user.uid, authData.user.displayName);
     const books = await base.fetch(authData.user.uid, { context: this });
-    await this.reloadBooks(books);
+
+    await this.setState({ books });
     await this.syncStart();
   };
 
   syncStart = () => {
-    console.log(this.state.uid);
+    console.log("Sync start:", this.state.uid);
+
     this.ref = base.syncState(`${this.state.uid}`, {
       context: this,
       state: "books"
@@ -76,6 +90,7 @@ class MyProvider extends Component {
   };
 
   syncStop = () => {
+    console.log("Sync stop:", this.state.books);
     base.removeBinding(this.ref);
   };
 
@@ -88,15 +103,15 @@ class MyProvider extends Component {
   };
 
   setUserId = (uid, userName) => {
-    uid && this.setState({ uid });
-    userName && this.setState({ userName });
+    this.setState({ uid });
+    this.setState({ userName });
   };
 
   logout = async () => {
     await firebase.auth().signOut();
     await this.setUserId("", "");
     await this.syncStop();
-    await this.reloadBooks();
+    await this.loadLocalBooks();
   };
 
   render() {
