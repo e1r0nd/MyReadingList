@@ -19,6 +19,7 @@ class MyProvider extends Component {
     currentBook: {
       author: "",
       date: "",
+      list: "",
       mark: "",
       order: "",
       tag: "",

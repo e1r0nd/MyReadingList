@@ -24,6 +24,27 @@ class BookForm extends Component {
     };
 
     e.preventDefault();
+    switch (book.mark) {
+      case "0":
+        book.list = "read";
+        break;
+      case "1":
+      case "2":
+      case "3":
+        book.list = "done";
+        break;
+      case "4":
+        book.list = "favorites";
+        break;
+      case "5":
+        book.list = "wishlist";
+        break;
+      case "6":
+        book.list = "blamelist";
+        break;
+      default:
+        console.warning("Book's marks is empty. Should be String value");
+    }
     cb(book);
     this.props.hideSideNav();
     e.currentTarget.reset();
@@ -82,12 +103,13 @@ class BookForm extends Component {
               value={ctx.state.currentBook.mark || ""}
               onChange={this.handleChange}
             >
-              <option value="1">Too Bad</option>
-              <option value="2">OK!</option>
-              <option value="3">Interesting</option>
-              <option value="4">Like it!</option>
+              <option value="0">Reading Now</option>
+              <option value="1">1 star</option>
+              <option value="2">2 stars</option>
+              <option value="3">3 stars</option>
+              <option value="4">Favorite</option>
               <option value="5">Want to read</option>
-              <option value="6">Reading now</option>
+              <option value="6">Don&rsquo;t want to read</option>
             </select>
             <textarea
               name="quote"
