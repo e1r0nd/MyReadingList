@@ -3,7 +3,7 @@ const books = {
     author: "Author A",
     date: "",
     list: "wishlist",
-    mark: "5",
+    mark: "",
     order: "1",
     title: "New Book",
     quote:
@@ -13,7 +13,7 @@ const books = {
     author: "e1r0nd",
     date: "",
     list: "wishlist",
-    mark: "5",
+    mark: "",
     order: "2",
     title: "PersonalBookShelf",
     quote: ""
@@ -22,7 +22,7 @@ const books = {
     author: "Author A",
     date: "",
     list: "wishlist",
-    mark: "5",
+    mark: "",
     order: "3",
     title: "Old book",
     quote: ""
@@ -31,7 +31,7 @@ const books = {
     author: "Author B",
     date: "",
     list: "wishlist",
-    mark: "5",
+    mark: "",
     order: "4",
     title: "Someday read this",
     quote: ""
@@ -40,7 +40,7 @@ const books = {
     author: "Author A",
     date: "",
     list: "read",
-    mark: "0",
+    mark: "",
     order: "0",
     title: "Good book",
     quote: ""
@@ -49,7 +49,7 @@ const books = {
     author: "Author C",
     date: "1982-02-13",
     list: "favorites",
-    mark: "4",
+    mark: "",
     order: "0",
     title: "This is the best one",
     quote: ""
@@ -85,7 +85,7 @@ const books = {
     author: "Author F",
     date: "",
     list: "blamelist",
-    mark: "6",
+    mark: "",
     order: "0",
     title: "The worst book",
     quote: ""
