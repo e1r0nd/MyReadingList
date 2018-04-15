@@ -1,30 +1,22 @@
 module.exports = {
-  "extends": [
-    "eslint:recommended",
-    "plugin:react/recommended",
-    "react-app"
-  ],
-  "parserOptions": {
-    "ecmaFeatures": {
-      "experimentalObjectRestSpread": true,
-      "jsx": true
+  extends: ["eslint:recommended", "plugin:react/recommended", "react-app"],
+  parserOptions: {
+    ecmaFeatures: {
+      experimentalObjectRestSpread: true,
+      jsx: true
     },
-    "sourceType": "module"
+    sourceType: "module"
   },
-  "env": {
-    "browser": true,
-    "commonjs": true,
-    "es6": true,
-    "node": true,
-    "jest": true
+  env: {
+    browser: true,
+    commonjs: true,
+    es6: true,
+    node: true,
+    jest: true
   },
-  "parser": "babel-eslint",
-  "plugins": [
-    "babel",
-    "react"
-  ],
-  "rules": {
-
+  parser: "babel-eslint",
+  plugins: ["babel", "react"],
+  rules: {
     /*Possible Errors */
     "comma-dangle": 0, // [1, "always-multiline"],
     "no-cond-assign": [1, "except-parens"],
@@ -59,13 +51,13 @@ module.exports = {
     /* Best Practices */
     "accessor-pairs": 0,
     "block-scoped-var": 0, // see Babel section
-    "complexity": 0,
+    complexity: 0,
     "consistent-return": 1,
-    "curly": [1, "all"],
+    curly: [1, "all"],
     "default-case": 0,
-    "dot-notation": [1, { "allowKeywords": true, "allowPattern": "" }],
+    "dot-notation": [1, { allowKeywords: true, allowPattern: "" }],
     "dot-location": [1, "property"],
-    "eqeqeq": [1, "smart"],
+    eqeqeq: [1, "smart"],
     "guard-for-in": 0,
     "no-alert": 1,
     "no-caller": 1,
@@ -101,15 +93,15 @@ module.exports = {
     "no-throw-literal": 1,
     "no-unused-expressions": 0,
     "no-void": 0,
-    "no-warning-comments": [1, { "terms": ["todo", "tofix"], "location": "start" }],
+    "no-warning-comments": [1, { terms: ["todo", "tofix"], location: "start" }],
     "no-with": 1,
-    "radix": 1,
+    radix: 1,
     "vars-on-top": 1,
     "wrap-iife": [1, "inside"],
-    "yoda": [1, "always", { "onlyEquality": true }],
+    yoda: [1, "always", { onlyEquality: true }],
 
     /* Strict Mode */
-    "strict": [1, "never"],
+    strict: [1, "never"],
 
     /* Variables */
     "no-catch-shadow": 0,
@@ -120,7 +112,7 @@ module.exports = {
     "no-undef-init": 1,
     "no-undef": 1,
     "no-undefined": 1,
-    "no-unused-vars": [1, { "vars": "local", "args": "after-used" }],
+    "no-unused-vars": [1, { vars: "local", args: "after-used" }],
     "no-use-before-define": 1,
 
     /* Node.js */
@@ -134,17 +126,17 @@ module.exports = {
 
     /* Stylistic Issues */
     "array-bracket-spacing": [1, "never"],
-    "brace-style": [1, "1tbs", { "allowSingleLine": true }],
-    "camelcase": [1, { "properties": "always" }],
-    "comma-spacing": [1, { "before": false, "after": true }],
+    "brace-style": [1, "1tbs", { allowSingleLine: true }],
+    camelcase: [1, { properties: "always" }],
+    "comma-spacing": [1, { before: false, after: true }],
     "comma-style": [1, "last"],
     "computed-property-spacing": 0,
     "consistent-this": 0,
     "eol-last": 1,
     "func-names": 1,
     "func-style": 0,
-    "indent": [1, 2],
-    "key-spacing": [1, { "beforeColon": false, "afterColon": true }],
+    indent: [1, 2, { SwitchCase: 1 }],
+    "key-spacing": [1, { beforeColon: false, afterColon: true }],
     "keyword-spacing": 1,
     "linebreak-style": 0,
     "max-nested-callbacks": [0, 3],
@@ -156,7 +148,7 @@ module.exports = {
     "no-inline-comments": 0,
     "no-lonely-if": 1,
     "no-mixed-spaces-and-tabs": 1,
-    "no-multiple-empty-lines": [1, { "max": 1 }],
+    "no-multiple-empty-lines": [1, { max: 1 }],
     "no-nested-ternary": 0,
     "no-new-object": 1,
     "no-spaced-func": 1,
@@ -169,9 +161,9 @@ module.exports = {
     "operator-assignment": [1, "never"],
     "padded-blocks": [0, "never"],
     "quote-props": [0, "as-needed"],
-    "quotes": [1, "double"],
-    "semi-spacing": [1, { "before": false, "after": true }],
-    "semi": [1, "always"],
+    quotes: [1, "double"],
+    "semi-spacing": [1, { before: false, after: true }],
+    semi: [1, "always"],
     "sort-vars": 0,
     "space-after-keywords": 0,
     "space-before-blocks": [1, "always"],
@@ -226,4 +218,4 @@ module.exports = {
     "react/sort-comp": 1,
     "react/wrap-multilines": 0
   }
-}
+};
