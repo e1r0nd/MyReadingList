@@ -1,13 +1,5 @@
 @import "../../styles/mixin";
 @import "../../styles/variables";
-$header-background: #34495e;
-$header-shadow: rgba(0, 0, 0, 0.3);
-$header-hero-background: #222;
-$header-hero-shadow: rgba(0, 0, 0, 0.6);
-$search-background: #fff;
-$title-color: #fff;
-$link-hover-background: $linksHoverBackground;
-$curve-transition: cubic-bezier(0, 0, 0.3, 1);
 
 .btn {
   background: none;

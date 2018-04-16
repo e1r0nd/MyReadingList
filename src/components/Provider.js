@@ -14,6 +14,7 @@ class MyProvider extends Component {
 
   state = {
     title: "",
+    previousTitle: "",
     books: {},
     query: "",
     currentBook: {
@@ -125,9 +126,23 @@ class MyProvider extends Component {
             this.setState({ [name]: state });
           },
           updateTitle: title => {
+            console.log(title);
+            if ("Statistics" !== title && this.state.query) {
+              title = "Search...";
+            }
             this.setState({ title });
           },
           updateQuery: query => {
+            if (query) {
+              if ("Search..." !== this.state.title) {
+                this.state.previousTitle &&
+                  this.setState({ previousTitle: this.state.title });
+                this.setState({ title: "Search..." });
+              }
+            } else {
+              this.setState({ title: this.state.previousTitle });
+              this.setState({ previousTitle: "" });
+            }
             this.setState({ query });
           },
           setCurrentBook: (currentIndex = "") => {

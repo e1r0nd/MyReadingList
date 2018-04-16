@@ -13,11 +13,16 @@ class Search extends Component {
     context.updateQuery(this.props.searchField.value.value);
   };
 
-  handleKeys = e => {
+  handleKeys = (e, ctx) => {
     const query = this.props.searchField.value;
 
     if (27 === e.keyCode) {
-      query.value ? (query.value = "") : this.props.showSearchBar();
+      if (query.value) {
+        query.value = "";
+        this.handleSearch(ctx);
+      } else {
+        this.props.showSearchBar();
+      }
     }
   };
 
@@ -38,7 +43,7 @@ class Search extends Component {
               type="text"
               placeholder="Search..."
               onChange={() => this.handleSearch(ctx)}
-              onKeyUp={this.handleKeys}
+              onKeyUp={e => this.handleKeys(e, ctx)}
             />
           </form>
         )}

@@ -3,6 +3,15 @@ $linksColorHovered: #004d40;
 $grayText: #777;
 $borderColor: #80cbc4;
 $linksHoverBackground: #ecf0f1;
+/* Navigation */
+$header-background: #009688;
+$header-shadow: rgba(0, 0, 0, 0.3);
+$header-hero-background: #222;
+$header-hero-shadow: rgba(0, 0, 0, 0.6);
+$search-background: #fff;
+$title-color: #fff;
+$link-hover-background: $linksHoverBackground;
+$curve-transition: cubic-bezier(0, 0, 0.3, 1);
 /* Input colors */
 $inputBorderColor: #bdc3c7;
 $inputBorderColorFocus: #1abc9c;
