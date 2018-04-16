@@ -126,7 +126,6 @@ class MyProvider extends Component {
             this.setState({ [name]: state });
           },
           updateTitle: title => {
-            console.log(title);
             if ("Statistics" !== title && this.state.query) {
               title = "Search...";
             }
