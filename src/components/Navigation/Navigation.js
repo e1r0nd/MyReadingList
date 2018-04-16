@@ -55,7 +55,9 @@ class Navigation extends Component {
               >
                 {ctx.state.title}
               </span>
-              <SearchBtn showSearchBar={this.showSearchBar} />
+              {"Statistics" !== ctx.state.title && (
+                <SearchBtn showSearchBar={this.showSearchBar} />
+              )}
               <AddNewBtn
                 showSideNav={this.showSideNav}
                 element={this.addNewEl}
