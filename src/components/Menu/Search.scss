@@ -1,0 +1,50 @@
+@import "../../styles/variables";
+
+.form-element {
+  width: 100%;
+}
+
+.form-control {
+  background-color: $inputBackgroundColor;
+  background-image: none;
+  border: 2px solid $inputBorderColor;
+  border-radius: 3px;
+  box-shadow: none;
+  color: #34495e;
+  display: block;
+  font-family: "Lato", Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.467;
+  padding: 8px 12px;
+  transition: border 0.25s linear, color 0.25s linear,
+    background-color 0.25s linear;
+  width: 100%;
+
+  &:focus {
+    background-color: $inputBackgroundColorFocus;
+    border: 2px solid $inputBorderColorFocus;
+    outline: none;
+  }
+}
+
+.inp-fld {
+  box-sizing: border-box;
+  display: flex;
+  flex: 0 0 100%;
+}
+
+.u--haserror {
+  border-color: $inputErrorColor;
+  color: $inputErrorColor;
+}
+
+@media (min-width: 768px) and (max-width: 992px) {
+  .inp-fld {
+    // probably will use it later
+  }
+}
+@media (max-width: 768px) {
+  .inp-fld {
+    // probably will use it later
+  }
+}

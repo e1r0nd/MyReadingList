@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { MyContext } from "../Provider";
+import "./Search.css";
 
 class Search extends Component {
   static propTypes = {
@@ -29,8 +30,9 @@ class Search extends Component {
     return (
       <MyContext.Consumer>
         {ctx => (
-          <form onSubmit={this.sumbitSearch}>
+          <form className="form-element" onSubmit={this.sumbitSearch}>
             <input
+              className="form-control inp-fld"
               name=""
               ref={this.props.searchField}
               type="text"
