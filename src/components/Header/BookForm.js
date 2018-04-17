@@ -108,7 +108,7 @@ class BookForm extends Component {
                   name="date"
                   className="form__control form__control--narrow inp-fld"
                   ref={this.dateRef}
-                  type="text"
+                  type="date"
                   placeholder="Date"
                   value={ctx.state.currentBook.date || ""}
                   onChange={this.handleChange}
