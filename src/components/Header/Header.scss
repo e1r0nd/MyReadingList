@@ -1,13 +1,30 @@
 @import "../../styles/variables";
 
-.form-element {
+.form {
+  align-items: center;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  padding: 0 16px;
+  width: 100%;
+
+  & .form__control {
+    margin-bottom: 12px;
+
+    @media (max-width: 768px) {
+      margin-bottom: 5px;
+    }
+  }
+}
+
+.form__element {
   width: 100%;
 }
 
-.form-control {
+.form__control {
   background-color: $inputBackgroundColor;
   background-image: none;
-  border: 2px solid $inputBorderColor;
+  border: 1px solid $inputBorderColor;
   border-radius: 3px;
   box-shadow: none;
   color: #34495e;
@@ -22,8 +39,15 @@
 
   &:focus {
     background-color: $inputBackgroundColorFocus;
-    border: 2px solid $inputBorderColorFocus;
+    border: 1px solid $inputBorderColorFocus;
     outline: none;
+  }
+
+  &--narrow {
+    @media (max-width: 768px) {
+      padding-bottom: 2px;
+      padding-top: 2px;
+    }
   }
 }
 

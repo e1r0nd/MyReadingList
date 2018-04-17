@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import "./Navigation.css";
 import { MyContext } from "../Provider";
-import SideNav from "../Menu/SideNav";
-import BurgerBtn from "../Menu/BurgerBtn";
-import AddNewBtn from "../Menu/AddNewBtn";
-import SearchBtn from "../Menu/SearchBtn";
-import Search from "../Menu/Search";
+import SideNav from "../Header/SideNav";
+import BurgerBtn from "../Header/BurgerBtn";
+import AddNewBtn from "../Header/AddNewBtn";
+import SearchBtn from "../Header/SearchBtn";
+import Search from "../Header/Search";
 
 class Navigation extends Component {
   sideNavEl = React.createRef();
