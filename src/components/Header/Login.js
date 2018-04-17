@@ -7,7 +7,7 @@ class Login extends Component {
       <MyContext.Consumer>
         {ctx => (
           <button
-            className=""
+            className="btn-flat"
             aria-label="login or logout"
             role="presentation"
             onClick={ctx.LogInOut}

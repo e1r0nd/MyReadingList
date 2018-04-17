@@ -156,6 +156,7 @@
     opacity: 1;
     @include background("menu");
   }
+
   &--narrow {
     @media (max-width: 425px) {
       height: 40px;
@@ -210,6 +211,36 @@
     transition: transform 0.33s $curve-transition;
     will-change: transform;
   }
+}
+
+.btn-flat {
+  background: $secondaryColorAccent;
+  border: none;
+  border-radius: 2px;
+  color: $textColorInverse;
+  font-weight: 600;
+  padding: 6px 22px;
+  transition: background-color 0.25s linear;
+  will-change: background-color;
+
+  &:hover {
+    background: $secondaryColor;
+    transition: background-color 0.25s linear;
+    will-change: background-color;
+  }
+
+  &--danger {
+    background: $dangerColor;
+    transition: background-color 0.25s linear;
+    will-change: background-color;
+
+    &:hover {
+      background: $errorColor;
+      transition: background-color 0.25s linear;
+      will-change: background-color;
+    }
+  }
+  @include cursor-pointer;
 }
 
 .u--hidden {

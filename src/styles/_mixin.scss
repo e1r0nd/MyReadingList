@@ -1,29 +1,29 @@
 @mixin size($size) {
-  width: $size;
   height: $size;
+  width: $size;
 }
 
 @mixin abs-pos {
   display: block;
+  left: 0;
   position: absolute;
   top: 0;
-  left: 0;
 }
 
 @mixin cover {
-  @include abs-pos;
-  @include size(100%);
   opacity: 1;
   transition: opacity 1s;
   will-change: opacity;
   z-index: 0;
+  @include abs-pos;
+  @include size(100%);
 }
 
 @mixin background-cover {
   background-color: #222;
-  background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  background-size: cover;
 }
 
 @mixin background-preload($image) {
@@ -39,18 +39,17 @@
   $image-2-w: $image + "-bg-w@x2.jpg";
   $image-3: $image + "-bg@x3.jpg";
   $image-3-w: $image + "-bg-w@x3.jpg";
-
-  @include background-cover;
   background-image: url($image-1);
+  @include background-cover;
 
   @media screen and (orientation: portrait) {
     background-image: url($image-1);
-    @media /* Use x2 images iPhone 6 & Retina HD displays */ (-webkit-min-device-pixel-ratio: 2),
-      (min-resolution: 192dpi) {
+
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
       background-image: url($image-2);
     }
-    @media /* Use x3 images for iPhone 6 plus and similar devices */ (-webkit-min-device-pixel-ratio: 3),
-      (min-resolution: 350dpi) {
+
+    @media (-webkit-min-device-pixel-ratio: 3), (min-resolution: 350dpi) {
       background-image: url($image-3);
     }
   }
@@ -61,11 +60,12 @@
       //  (min-width: 468px) {
       background-image: url($image-1-w);
       // }
-      @media /* Use x2 images iPhone 6 & Retina HD displays */ (-webkit-min-device-pixel-ratio: 2) and (min-width: 468px),
+      @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 468px),
         (min-resolution: 192dpi) and (min-width: 468px) {
         background-image: url($image-2-w);
       }
-      @media /* Use x3 images for iPhone 6 plus and similar devices */ (-webkit-min-device-pixel-ratio: 3) and (min-width: 468px),
+
+      @media (-webkit-min-device-pixel-ratio: 3) and (min-width: 468px),
         (min-resolution: 350dpi) and (min-width: 468px) {
         background-image: url($image-3-w);
       }
@@ -74,23 +74,25 @@
 }
 
 @mixin main-content-format {
-  margin-right: auto;
   margin-left: auto;
+  margin-right: auto;
 
   @media (min-width: 1200px) {
     width: 1170px;
   }
+
   @media (min-width: 992px) {
     width: 970px;
   }
+
   @media screen and (min-width: 768px) {
     max-width: 730px;
   }
 }
 
 @mixin main-content-paddings {
-  padding-right: 15px;
   padding-left: 15px;
+  padding-right: 15px;
 }
 
 @mixin cursor-pointer {
@@ -104,8 +106,8 @@
 }
 
 @mixin btn-hidden {
-  opacity: 0;
   cursor: auto;
+  opacity: 0;
   transition: opacity 0.3s;
   will-change: opacity;
 }

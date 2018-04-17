@@ -74,7 +74,10 @@ class BookForm extends Component {
         {ctx => (
           <Fragment>
             <div className="side-nav__mock-bg">
-              <header className="side-nav__header" ref={this.sideNavHeader} />
+              <header
+                className="side-nav__header side-nav__header--narrow"
+                ref={this.sideNavHeader}
+              />
             </div>
             <div className="form">
               <form
@@ -136,9 +139,17 @@ class BookForm extends Component {
                   value={ctx.state.currentBook.quote || ""}
                   onChange={this.handleChange}
                 />
-                <button type="submit">
-                  {ctx.state.currentIndex ? "Save" : "Add"} Book
-                </button>
+                <div className="form__btns">
+                  <button
+                    type="reset"
+                    className="btn-flat btn-flat--danger form__btn"
+                  >
+                    Delete Book
+                  </button>
+                  <button type="submit" className="btn-flat form__btn">
+                    {ctx.state.currentIndex ? "Save" : "Add"} Book
+                  </button>
+                </div>
               </form>
             </div>
           </Fragment>
