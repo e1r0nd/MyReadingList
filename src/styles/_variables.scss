@@ -1,21 +1,35 @@
-$linksColor: #009688;
-$linksColorHovered: #004d40;
-$grayText: #777;
-$textDanger: #f44336;
-$borderColor: #80cbc4;
-$linksHoverBackground: #ecf0f1;
+/* Colors */
+$primaryColor: #16a085; ///gren
+$primaryColorAccent: #1abc9c; // light green
+$secondaryColor: #7f8c8d; // grey
+$secondaryColorAccent: #95a5a6; // light grey
+$ternaryColor: #bdc3c7; // silver
+$ternaryColorAccent: #ecf0f1; // light silver
+$textColor: #2c3e50; // dark blue
+$textColorAccent: #34495e; // blue
+$textColorInverse: #ecf0f1; // light silver
+$dangerColor: #c0392b; // red
+$errorColor: #e74c3c; // light red
+$cleanColor: #fff; // white
+/* Menu */
+$linksColor: $textColorAccent;
+$linksColorHovered: $textColor;
+$grayText: $textColor;
+$textDanger: $dangerColor;
+$borderColor: $secondaryColorAccent;
+$linksHoverBackground: $ternaryColorAccent;
 /* Navigation */
-$header-background: #009688;
+$header-background: $primaryColor;
 $header-shadow: rgba(0, 0, 0, 0.3);
 $header-hero-background: #222;
 $header-hero-shadow: rgba(0, 0, 0, 0.6);
-$search-background: #fff;
-$title-color: #fff;
+$search-background: $cleanColor;
+$title-color: $cleanColor;
 $link-hover-background: $linksHoverBackground;
 $curve-transition: cubic-bezier(0, 0, 0.3, 1);
 /* Input colors */
-$inputBorderColor: #bdc3c7;
-$inputBorderColorFocus: #1abc9c;
-$inputBackgroundColor: #fff;
-$inputBackgroundColorFocus: #ecf0f1;
-$inputErrorColor: #e74c3c;
+$inputBorderColor: $secondaryColor;
+$inputBorderColorFocus: $textColor;
+$inputBackgroundColor: $cleanColor;
+$inputBackgroundColorFocus: $textColorInverse;
+$inputErrorColor: $errorColor;
