@@ -13,25 +13,28 @@
     "react": "^16.3.0-alpha.1",
     "react-dom": "^16.3.0-alpha.1",
     "react-router-dom": "^4.2.2",
-    "react-scripts": "1.1.1"
+    "react-scripts": "1.1.1",
+    "stylelint": "^9.2.0",
+    "stylelint-order": "^0.8.1"
   },
   "devDependencies": {
-    "csscomb": "^4.2.0",
-    "serve": "^6.5.3",
-    "prop-types": "^15.6.1",
-    "node-sass-chokidar": "0.0.3",
-    "npm-run-all": "^4.1.2",
+    "eslint-plugin-babel": "^4.1.2",
     "husky": "^0.14.3",
     "lint-staged": "^7.0.0",
+    "node-sass-chokidar": "0.0.3",
+    "npm-run-all": "^4.1.2",
     "prettier": "^1.11.1",
-    "eslint-plugin-babel": "^4.1.2"
+    "prop-types": "^15.6.1",
+    "serve": "^6.5.3"
   },
   "scripts": {
     "dev": "npm-run-all -p watch-css start-js",
     "start": "serve --single ./build",
     "precommit": "lint-staged",
-    "build-css": "node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/",
-    "watch-css": "npm run build-css && node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/ --watch --recursive",
+    "build-css":
+      "node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/",
+    "watch-css":
+      "npm run build-css && node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/ --watch --recursive",
     "start-js": "react-scripts start",
     "predeploy": "npm run build",
     "build-js": "react-scripts build",
@@ -42,7 +45,7 @@
   },
   "lint-staged": {
     "src/**/*.{js,jsx,json,scss}": [
-      "csscomb --tty-mode --",
+      "stylelint --fix",
       "prettier --write",
       "git add"
     ]
