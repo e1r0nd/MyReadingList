@@ -5,7 +5,8 @@ import { MyContext } from "../Provider";
 class BookForm extends Component {
   static propTypes = {
     hideSideNav: PropTypes.func.isRequired,
-    context: PropTypes.object
+    context: PropTypes.object,
+    titleRef: PropTypes.object.isRequired
   };
 
   componentDidMount() {
@@ -19,7 +20,6 @@ class BookForm extends Component {
   authorRef = React.createRef();
   dateRef = React.createRef();
   markRef = React.createRef();
-  titleRef = React.createRef();
   quoteRef = React.createRef();
 
   sumbitBook = (e, cb) => {
@@ -27,7 +27,7 @@ class BookForm extends Component {
       author: this.authorRef.value.value,
       date: this.dateRef.value.value,
       mark: this.markRef.value.value,
-      title: this.titleRef.value.value,
+      title: this.props.titleRef.value.value,
       quote: this.quoteRef.value.value
     };
 
@@ -89,7 +89,7 @@ class BookForm extends Component {
                 <input
                   name="title"
                   className="form__control form__control--narrow inp-fld"
-                  ref={this.titleRef}
+                  ref={this.props.titleRef}
                   type="text"
                   placeholder="Title"
                   value={ctx.state.currentBook.title || ""}

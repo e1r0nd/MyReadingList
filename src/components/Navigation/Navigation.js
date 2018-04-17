@@ -13,11 +13,15 @@ class Navigation extends Component {
   sideNavTitle = React.createRef();
   searchBarRef = React.createRef();
   searchField = React.createRef();
+  titleRef = React.createRef();
 
-  showSideNav = el => {
+  showSideNav = (el, componentName) => {
     el.value.classList.add("side-nav--animatable");
     el.value.classList.add("side-nav--visible");
     el.value.addEventListener("transitionend", this.onTransitionEnd);
+    if ("BookForm" === componentName) {
+      setTimeout(() => this.titleRef.value.focus(), 300);
+    }
   };
 
   onTransitionEnd = e => {
@@ -62,7 +66,7 @@ class Navigation extends Component {
               />
 
               <AddNewBtn
-                showSideNav={this.showSideNav}
+                showSideNav={e => this.showSideNav(e, "BookForm")}
                 element={this.addNewEl}
                 context={ctx}
                 componentName="BookForm"
@@ -79,6 +83,7 @@ class Navigation extends Component {
               componentName="BookForm"
               sideNavEl={this.addNewEl}
               context={ctx}
+              titleRef={this.titleRef}
             />
             <div className="header search-bar" ref={this.searchBarRef}>
               <Search

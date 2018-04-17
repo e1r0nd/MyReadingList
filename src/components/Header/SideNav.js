@@ -9,7 +9,8 @@ class SideNav extends Component {
     className: PropTypes.string,
     componentName: PropTypes.string.isRequired,
     sideNavEl: PropTypes.object.isRequired,
-    context: PropTypes.object
+    context: PropTypes.object,
+    titleRef: PropTypes.object
   };
 
   static defaultProps = {
@@ -154,6 +155,7 @@ class SideNav extends Component {
             <SpecificComponent
               hideSideNav={this.hideSideNav}
               context={this.props.context}
+              titleRef={this.props.titleRef}
             />
           </nav>
         </aside>
