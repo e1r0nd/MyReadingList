@@ -43,13 +43,14 @@
   border: none;
   color: $title-color;
   height: 24px;
-
+  @include btn-visible;
   @include cursor-pointer;
   margin: 0;
   padding: 0;
   width: 24px;
 }
 .header__search-btn {
+  @include btn-visible;
   margin-right: 16px;
 }
 .side-nav {
@@ -181,4 +182,8 @@
     transition: transform 0.33s $curve-transition;
     will-change: transform;
   }
+}
+
+.u--hidden {
+  @include btn-hidden;
 }

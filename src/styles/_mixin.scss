@@ -96,3 +96,16 @@
 @mixin cursor-pointer {
   cursor: pointer;
 }
+
+@mixin btn-visible {
+  opacity: 1;
+  transition: opacity 0.3s;
+  will-change: opacity;
+}
+
+@mixin btn-hidden {
+  opacity: 0;
+  cursor: auto;
+  transition: opacity 0.3s;
+  will-change: opacity;
+}

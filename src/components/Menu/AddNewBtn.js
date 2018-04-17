@@ -7,7 +7,8 @@ class AddNewBtn extends Component {
     showSideNav: PropTypes.func,
     element: PropTypes.object,
     componentName: PropTypes.string,
-    context: PropTypes.object
+    context: PropTypes.object,
+    isVisible: PropTypes.bool
   };
 
   componentDidUpdate() {
@@ -18,6 +19,9 @@ class AddNewBtn extends Component {
     }
   }
   render() {
+    const visibilityClass = this.props.isVisible ? "" : " u--hidden";
+    const btnClass = `header__menu-toggle u--pointer${visibilityClass}`;
+
     return (
       <MyContext.Consumer>
         {ctx => (
@@ -25,6 +29,7 @@ class AddNewBtn extends Component {
             <button
               id="addNewShow"
               onClick={() =>
+                this.props.isVisible &&
                 this.props.showSideNav(
                   this.props.element,
                   ctx,
@@ -33,7 +38,7 @@ class AddNewBtn extends Component {
               }
               aria-label="show add new form"
               role="presentation"
-              className="header__menu-toggle u--pointer"
+              className={btnClass}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"

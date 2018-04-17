@@ -4,17 +4,23 @@ import PropTypes from "prop-types";
 class BurgerBtn extends Component {
   static propTypes = {
     showSideNav: PropTypes.func,
-    element: PropTypes.object
+    element: PropTypes.object,
+    isVisible: PropTypes.bool
   };
 
   render() {
+    const visibilityClass = this.props.isVisible ? "" : " u--hidden";
+    const btnClass = `header__menu-toggle u--pointer${visibilityClass}`;
+
     return (
       <button
         id="menuShow"
-        onClick={() => this.props.showSideNav(this.props.element)}
+        onClick={() =>
+          this.props.isVisible && this.props.showSideNav(this.props.element)
+        }
         aria-label="show menu"
         role="presentation"
-        className="header__menu-toggle u--pointer"
+        className={btnClass}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

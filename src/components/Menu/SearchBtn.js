@@ -3,16 +3,20 @@ import PropTypes from "prop-types";
 
 class SearchBtn extends Component {
   static propTypes = {
-    showSearchBar: PropTypes.func.isRequired
+    showSearchBar: PropTypes.func.isRequired,
+    isVisible: PropTypes.bool
   };
 
   render() {
+    const visibilityClass = this.props.isVisible ? "" : " u--hidden";
+    const btnClass = `header__menu-toggle u--pointer header__search-btn${visibilityClass}`;
+
     return (
       <button
-        onClick={this.props.showSearchBar}
+        onClick={() => this.props.isVisible && this.props.showSearchBar()}
         aria-label="show search form"
         role="presentation"
-        className="header__menu-toggle u--pointer header__search-btn"
+        className={btnClass}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

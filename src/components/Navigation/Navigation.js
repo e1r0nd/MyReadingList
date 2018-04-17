@@ -48,6 +48,7 @@ class Navigation extends Component {
               <BurgerBtn
                 showSideNav={this.showSideNav}
                 element={this.sideNavEl}
+                isVisible={"Search..." !== ctx.state.title}
               />
               <span
                 ref={this.sideNavTitle}
@@ -55,14 +56,17 @@ class Navigation extends Component {
               >
                 {ctx.state.title}
               </span>
-              {"Statistics" !== ctx.state.title && (
-                <SearchBtn showSearchBar={this.showSearchBar} />
-              )}
+              <SearchBtn
+                showSearchBar={this.showSearchBar}
+                isVisible={"Statistics" !== ctx.state.title}
+              />
+
               <AddNewBtn
                 showSideNav={this.showSideNav}
                 element={this.addNewEl}
                 context={ctx}
                 componentName="BookForm"
+                isVisible={"Search..." !== ctx.state.title}
               />
             </div>
             <SideNav
