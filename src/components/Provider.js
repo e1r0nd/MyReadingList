@@ -30,7 +30,12 @@ class MyProvider extends Component {
     currentIndex: "",
     sideNavs: {},
     uid: "",
-    userName: ""
+    userName: "",
+    modal: {
+      show: false,
+      title: "",
+      action: ""
+    }
   };
 
   componentDidMount() {
@@ -178,6 +183,22 @@ class MyProvider extends Component {
           },
           LogInOut: () => {
             this.state.uid ? this.logout() : this.authenticate();
+          },
+          showModal: (title, action) => {
+            const modal = {
+              show: true,
+              title,
+              action
+            };
+            this.setState({ modal });
+          },
+          hideModal: () => {
+            const modal = {
+              show: false,
+              title: "",
+              action: ""
+            };
+            this.setState({ modal });
           }
         }}
       >

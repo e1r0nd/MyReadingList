@@ -6,6 +6,7 @@ import BurgerBtn from "../Header/BurgerBtn";
 import AddNewBtn from "../Header/AddNewBtn";
 import SearchBtn from "../Header/SearchBtn";
 import Search from "../Header/Search";
+import Modal from "../Modal/Modal";
 
 class Navigation extends Component {
   sideNavEl = React.createRef();
@@ -91,6 +92,7 @@ class Navigation extends Component {
                 searchField={this.searchField}
               />
             </div>
+            <Modal />
           </header>
         )}
       </MyContext.Consumer>

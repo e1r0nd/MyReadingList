@@ -68,6 +68,14 @@ class BookForm extends Component {
     this.props.context.changeBook(updatedBook);
   };
 
+  handleReset = (e, ctx) => {
+    const title = `Remove "${ctx.state.currentBook.title}"?`;
+
+    e.preventDefault();
+    console.log("delete");
+    ctx.showModal(title, "Delete");
+  };
+
   render() {
     return (
       <MyContext.Consumer>
@@ -88,6 +96,7 @@ class BookForm extends Component {
                     ctx[ctx.state.currentIndex ? "updateBook" : "addBook"]
                   );
                 }}
+                onReset={e => this.handleReset(e, ctx)}
               >
                 <input
                   name="title"
@@ -140,12 +149,16 @@ class BookForm extends Component {
                   onChange={this.handleChange}
                 />
                 <div className="form__btns">
-                  <button
-                    type="reset"
-                    className="btn-flat btn-flat--danger form__btn"
-                  >
-                    Delete Book
-                  </button>
+                  {ctx.state.currentIndex ? (
+                    <button
+                      type="reset"
+                      className="btn-flat btn-flat--danger form__btn"
+                    >
+                      Delete Book
+                    </button>
+                  ) : (
+                    <span />
+                  )}
                   <button type="submit" className="btn-flat form__btn">
                     {ctx.state.currentIndex ? "Save" : "Add"} Book
                   </button>
