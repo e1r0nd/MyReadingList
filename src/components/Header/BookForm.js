@@ -73,7 +73,7 @@ class BookForm extends Component {
 
     e.preventDefault();
     console.log("delete");
-    ctx.showModal(title, "Delete");
+    ctx.showModal(title, ctx.modal.action, "Delete");
   };
 
   render() {

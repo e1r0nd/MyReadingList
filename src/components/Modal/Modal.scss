@@ -2,23 +2,16 @@
 
 .modal {
   background: $header-hero-shadow;
-
-  // &::before {
-  // content: "";
-  // display: block;
   height: 0;
   left: 0;
-  // left: 0;
   opacity: 0;
   position: fixed;
   top: 0;
-  // position: absolute;
-  // top: 0;
   transition: opacity 0.3s $curve-transition;
   width: 100%;
   will-change: opacity;
   z-index: 300;
-  // }
+
   .modal__container {
     background: $title-color;
     box-shadow: 2px 0 12px $header-hero-shadow;
@@ -46,7 +39,6 @@
     will-change: opacity;
 
     .modal__container {
-      // opacity: 1;
       transform: translateY(0%);
       transition: transform 0.33s $curve-transition;
       will-change: transform;
