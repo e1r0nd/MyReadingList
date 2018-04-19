@@ -18,8 +18,13 @@ class SideNav extends Component {
   };
 
   componentDidMount() {
-    this.props.context &&
-      this.props.context.setSideNav(this.props.componentName, false);
+    if (this.props.context) {
+      this.props.context.setSideNav(
+        this.props.componentName,
+        false,
+        this.hideSideNav
+      );
+    }
   }
 
   components = {

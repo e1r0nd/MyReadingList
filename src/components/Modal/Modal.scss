@@ -14,14 +14,16 @@
 
   .modal__container {
     background: $title-color;
+    border-radius: 2px;
     box-shadow: 2px 0 12px $header-hero-shadow;
-    height: 100px;
+    box-sizing: border-box;
+    height: 160px;
     left: calc(50% - 330px);
     padding: 30px;
     position: fixed;
     top: 0;
     transform: translateY(-120%);
-    transition: transform 0.13s $curve-transition;
+    transition: transform 0.3s $curve-transition;
     width: 600px;
     will-change: transform;
 

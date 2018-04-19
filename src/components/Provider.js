@@ -28,13 +28,13 @@ class MyProvider extends Component {
       quote: ""
     },
     currentIndex: "",
-    sideNavs: {},
     uid: "",
     userName: "",
     modal: {
       show: false,
       title: "",
-      action: ""
+      action: "",
+      hideForm: null
     }
   };
 
@@ -127,7 +127,12 @@ class MyProvider extends Component {
       <MyContext.Provider
         value={{
           state: this.state,
-          setSideNav: (name, state) => {
+          setSideNav: (name, state, action) => {
+            const modal = { ...this.state.modal, hideForm: action };
+            "BookForm" === name &&
+              action &&
+              !this.state.modal.hideForm &&
+              this.setState({ modal });
             this.setState({ [name]: state });
           },
           updateTitle: title => {
@@ -178,6 +183,12 @@ class MyProvider extends Component {
             books[`book${Date.now()}`] = book;
             this.setState({ books });
           },
+          removeBook: index => {
+            console.log(index);
+            const books = { ...this.books };
+            books[index] = null;
+            this.setState({ books });
+          },
           loadLocalBooks: () => {
             this.loadLocalBooks();
           },
@@ -186,6 +197,7 @@ class MyProvider extends Component {
           },
           showModal: (title, action) => {
             const modal = {
+              ...this.state.modal,
               show: true,
               title,
               action
@@ -194,6 +206,7 @@ class MyProvider extends Component {
           },
           hideModal: () => {
             const modal = {
+              ...this.state.modal,
               show: false,
               title: "",
               action: ""

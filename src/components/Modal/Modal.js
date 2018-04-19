@@ -1,11 +1,20 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import "./Modal.css";
 import { MyContext } from "../Provider";
 
 class Modal extends Component {
-  static propTypes = {
-    action: PropTypes.func
+  handleAction = (e, ctx) => {
+    e.preventDefault();
+    switch (ctx.state.modal.action) {
+      case "Remove":
+        ctx.removeBook(ctx.state.currentIndex);
+        ctx.hideModal();
+        ctx.setCurrentBook();
+        ctx.state.modal.hideForm();
+        break;
+      default:
+        break;
+    }
   };
 
   render() {
@@ -21,11 +30,16 @@ class Modal extends Component {
               className="modal__container"
             >
               <h3 id="dialogTitle">{ctx.state.modal.title}</h3>
-              <div>
-                <button onClick={this.props.action}>
+              <div className="form__btns">
+                <button
+                  onClick={e => this.handleAction(e, ctx)}
+                  className="btn-flat btn-flat--danger form__btn"
+                >
                   {ctx.state.modal.action}
                 </button>
-                <button onClick={ctx.hideModal}>Cancel</button>
+                <button onClick={ctx.hideModal} className="btn-flat form__btn">
+                  Cancel
+                </button>
               </div>
             </div>
           </div>
