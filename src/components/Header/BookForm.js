@@ -20,15 +20,13 @@ class BookForm extends Component {
   authorRef = React.createRef();
   dateRef = React.createRef();
   markRef = React.createRef();
-  quoteRef = React.createRef();
 
   sumbitBook = (e, cb) => {
     const book = {
       author: this.authorRef.value.value,
       date: this.dateRef.value.value,
       mark: this.markRef.value.value,
-      title: this.props.titleRef.value.value,
-      quote: this.quoteRef.value.value
+      title: this.props.titleRef.value.value
     };
 
     e.preventDefault();
@@ -138,14 +136,6 @@ class BookForm extends Component {
                   <option value="5">Want to read</option>
                   <option value="6">Don&rsquo;t want to read</option>
                 </select>
-                <textarea
-                  name="quote"
-                  className="form__control form__control--narrow inp-fld"
-                  ref={this.quoteRef}
-                  placeholder="Quote"
-                  value={ctx.state.currentBook.quote || ""}
-                  onChange={this.handleChange}
-                />
                 <div className="form__btns">
                   {ctx.state.currentIndex ? (
                     <button

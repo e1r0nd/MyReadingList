@@ -2,7 +2,8 @@ import React, { Component, Fragment } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { Redirect } from "react-router";
 import ListItems from "./ListItems/ListItems";
-import App from "./App/App";
+import Stats from "./Stats/Stats";
+import Import from "./Import";
 import NotFound from "./NotFound";
 import Navigation from "../components/Navigation/Navigation";
 import Footer from "../components/Footer/Footer";
@@ -24,7 +25,8 @@ class Router extends Component {
                     render={() => <Redirect to="/book/wishlist" />}
                   />
                   <Route path="/book/:viewId" component={ListItems} />
-                  <Route path="/stats" component={App} />
+                  <Route path="/stats" component={Stats} />
+                  <Route path="/import" component={Import} />
                   <Route component={NotFound} />
                 </Switch>
               </main>

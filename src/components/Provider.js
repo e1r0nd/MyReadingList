@@ -22,10 +22,7 @@ class MyProvider extends Component {
       date: "",
       list: "",
       mark: "",
-      order: "",
-      tag: "",
-      title: "",
-      quote: ""
+      title: ""
     },
     currentIndex: "",
     uid: "",
@@ -160,8 +157,7 @@ class MyProvider extends Component {
               date: "",
               mark: "",
               order: "",
-              title: "",
-              quote: ""
+              title: ""
             };
             const currentBook = this.state.books[currentIndex] || emptyBook;
             this.setState({ currentBook });
