@@ -13,7 +13,6 @@ class ListItems extends Component {
   render() {
     const currentList = this.state.match.params.viewId;
     const capsСurrentList = currentList[0].toUpperCase() + currentList.slice(1);
-
     return (
       <MyContext.Consumer>
         {ctx => (
@@ -30,6 +29,16 @@ class ListItems extends Component {
                         author.toLowerCase().includes(query) ||
                         quote.toLowerCase().includes(query)
                     : currentList === list;
+                })
+                .sort((a, b) => {
+                  const [date1, date2] = [
+                    new Date(ctx.state.books[a].date).getTime(),
+                    new Date(ctx.state.books[b].date).getTime()
+                  ];
+                  if ("wishlist" !== currentList || "read" !== currentList) {
+                    return date2 - date1;
+                  }
+                  return 0;
                 })
                 .map(key => (
                   <Item key={key} book={ctx.state.books[key]} index={key} />
