@@ -4,7 +4,7 @@
 
 Started in _February 2018_. One page app for the book lists keeping. Developed with React. Progressive Web App, Responsive design/Mobile First approach, indexDB, unit testing (Jest), webpack, npm. https://myreadinglist.now.sh
 
-The replacement for my old project "Personal Book Shelf". A fast and convenient single page application to store the books' list that I want to read and have read. Application might be used within all devices (PC, tablet, mobile).
+The replacement for my old project "Personal Book Shelf". A fast and convenient single page application to store the books' list that I want to read and have read. Application might be used across all devices (PC, tablet, mobile).
 
 ## Copyright
 
