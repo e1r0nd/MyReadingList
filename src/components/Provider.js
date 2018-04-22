@@ -16,6 +16,7 @@ class MyProvider extends Component {
     title: "",
     previousTitle: "",
     books: {},
+    listedBooks: [],
     query: "",
     currentBook: {
       author: "",
@@ -183,6 +184,22 @@ class MyProvider extends Component {
             console.log(index);
             const books = { ...this.books };
             books[index] = null;
+            this.setState({ books });
+          },
+          setListedBooks: listedBooks => {
+            this.setState({ listedBooks });
+          },
+          updateOrder: listedBooks => {
+            console.log(listedBooks);
+            // console.log(this.state.books);
+
+            const books = Object.keys(this.state.books).map(key => {
+              const book = { ...this.state.books[key] };
+              book.order = listedBooks.indexOf(key);
+
+              return book;
+            });
+            // console.log(books);
             this.setState({ books });
           },
           loadLocalBooks: () => {
