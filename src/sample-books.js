@@ -4,91 +4,80 @@ const books = {
     date: "",
     list: "wishlist",
     mark: "",
-    order: "1",
-    title: "New Book",
-    quote:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore."
+    order: 1,
+    title: "New Book"
   },
   book2: {
     author: "e1r0nd",
     date: "",
     list: "wishlist",
     mark: "",
-    order: "2",
-    title: "PersonalBookShelf",
-    quote: ""
+    order: 2,
+    title: "PersonalBookShelf"
   },
   book3: {
     author: "Author A",
     date: "",
     list: "wishlist",
     mark: "",
-    order: "3",
-    title: "Old book",
-    quote: ""
+    order: 3,
+    title: "Old book"
   },
   book4: {
     author: "Author B",
     date: "",
     list: "wishlist",
     mark: "",
-    order: "4",
-    title: "Someday read this",
-    quote: ""
+    order: 4,
+    title: "Someday read this"
   },
   book5: {
     author: "Author A",
     date: "",
     list: "read",
     mark: "",
-    order: "0",
-    title: "Good book",
-    quote: ""
+    order: -1,
+    title: "Good book"
   },
   book6: {
     author: "Author C",
     date: "1982-02-13",
     list: "favorites",
     mark: "",
-    order: "0",
-    title: "This is the best one",
-    quote: ""
+    order: -1,
+    title: "This is the best one"
   },
   book7: {
     author: "Author D",
     date: "1991-03-14",
     list: "done",
     mark: "1",
-    order: "0",
-    title: "The cat-book",
-    quote: ""
+    order: -1,
+    title: "The cat-book"
   },
   book8: {
     author: "Author D",
     date: "1991-03-20",
     list: "done",
     mark: "2",
-    order: "0",
-    title: "The dog-book",
-    quote: ""
+    order: -1,
+    title: "The dog-book"
   },
   book9: {
     author: "Author E",
     date: "2000-06-15",
     list: "done",
     mark: "3",
-    order: "0",
-    title: "The bird-book",
-    quote: ""
+    order: -1,
+    title: "The bird-book"
   },
   book10: {
     author: "Author F",
     date: "",
     list: "blamelist",
     mark: "",
-    order: "0",
-    title: "The worst book",
-    quote: ""
+    order: -1,
+    title: "The worst book"
   }
 };
 

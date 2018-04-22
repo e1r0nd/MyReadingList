@@ -67,7 +67,6 @@ class MyProvider extends Component {
 
   loadLocalBooks = () => {
     idbKeyval.get("localBooks").then(idbKeyvalRef => {
-      console.log(sampleBooks);
       const books = idbKeyvalRef ? idbKeyvalRef : sampleBooks;
 
       this.setState({ books });
@@ -190,16 +189,14 @@ class MyProvider extends Component {
             this.setState({ listedBooks });
           },
           updateOrder: listedBooks => {
-            console.log(listedBooks);
-            // console.log(this.state.books);
+            const books = {};
 
-            const books = Object.keys(this.state.books).map(key => {
+            Object.keys(this.state.books).forEach(key => {
               const book = { ...this.state.books[key] };
-              book.order = listedBooks.indexOf(key);
 
-              return book;
+              book.order = listedBooks.indexOf(key);
+              books[key] = book;
             });
-            // console.log(books);
             this.setState({ books });
           },
           loadLocalBooks: () => {

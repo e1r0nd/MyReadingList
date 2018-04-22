@@ -36,8 +36,6 @@ const SortableList = sortableContainer(({ ctx, items, draggable }) => {
 });
 
 function onSortEnd({ newIndex, oldIndex }) {
-  console.log(newIndex, oldIndex);
-
   this.updateOrder(arrayMove(this.state.listedBooks, oldIndex, newIndex));
 }
 
@@ -82,10 +80,8 @@ class ListItems extends Component {
           return 0;
         });
 
-      ctx.state.listedBooks.length !== listedBooks.length &&
+      ctx.state.listedBooks.join() !== listedBooks.join() &&
         ctx.setListedBooks(listedBooks);
-      // this.state.listedBooks.length !== listedBooks.length &&
-      //   this.setState({ listedBooks });
     };
 
     return (

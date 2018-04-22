@@ -37,7 +37,7 @@ class Item extends Component {
   };
 
   render() {
-    const { author, date, mark, order, title } = this.props.book;
+    const { author, date, mark, title } = this.props.book;
     const starIcon = `<img class="book-mark__itm" src=${star} alt="" />`;
 
     return (
@@ -61,7 +61,7 @@ class Item extends Component {
                   />
                 )}
               </div>
-              <p className="list-item__date">{date}</p> <span>{order}</span>{" "}
+              <p className="list-item__date">{date}</p>{" "}
             </div>
           </li>
         )}
