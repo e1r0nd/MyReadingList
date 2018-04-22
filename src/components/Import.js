@@ -7,6 +7,8 @@ class Import extends Component {
   handleClick = (e, ctx) => {
     e.preventDefault();
     const str = JSON.parse(this.txtRef.value.value);
+    let index = 0;
+
     str.forEach(element => {
       const { mark, title, author, date } = element;
       const book = { mark, title, author, date };
@@ -32,6 +34,9 @@ class Import extends Component {
         default:
           console.warning("Book.mark field is empty. Should be String value");
       }
+
+      book.order = "wishlist" === book.list ? index++ : -1;
+
       ctx.addBook(book);
     });
   };
