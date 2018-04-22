@@ -12,7 +12,7 @@ class BookForm extends Component {
   componentDidMount() {
     // Lazy load the background image
     setTimeout(() => {
-      this.sideNavHeader.value.classList.add("side-nav__header--lazy-bg");
+      this.sideNavHeader.value.classList.add("side-nav__add--lazy-bg");
     }, 1000);
   }
 

@@ -157,6 +157,11 @@
     @include background("menu");
   }
 
+  &.side-nav__add--lazy-bg {
+    opacity: 1;
+    @include background("add");
+  }
+
   &--narrow {
     @media (max-width: 425px) {
       height: 100px;
