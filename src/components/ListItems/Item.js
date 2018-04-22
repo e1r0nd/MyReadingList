@@ -37,6 +37,9 @@ class Item extends Component {
   };
 
   render() {
+    if (!this.props.book) {
+      return false;
+    }
     const { author, date, mark, title } = this.props.book;
     const starIcon = `<img class="book-mark__itm" src=${star} alt="" />`;
 
