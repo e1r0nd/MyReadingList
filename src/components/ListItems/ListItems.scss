@@ -5,36 +5,62 @@
   margin: 0;
   padding: 0;
 }
-.list-item {
-  border-bottom: 1px solid $borderColor;
-  font-size: 21px;
 
-  @include main-content-paddings;
-  @include cursor-pointer;
+.list-item {
+  align-items: center;
+  border-bottom: 1px solid $borderColor;
+  display: flex;
+  font-size: 21px;
   list-style: none;
+
   &:last-child {
     border-bottom: none;
   }
+
+  &__content {
+    flex-flow: wrap;
+    justify-content: left;
+    min-height: 36px;
+  }
+
   &__title {
     font-weight: 700;
   }
+
   &__author {
     font-style: italic;
   }
+
   &__date {
     color: $grayText;
+    flex-basis: 100%;
     margin: 0;
   }
+
   &__mark {
     display: inline-flex;
     white-space: nowrap;
   }
+
+  &__icon {
+    cursor: move;
+    margin-right: 24px;
+
+    @media (max-width: 425px) {
+      margin-right: 12px;
+    }
+  }
+
   &:hover {
     background-color: $linksHoverBackground;
   }
+  @include main-content-paddings;
+  @include cursor-pointer;
 }
+
 .book-mark {
   padding-left: 12px;
+
   &__itm {
     padding-left: 5px;
     vertical-align: text-top;

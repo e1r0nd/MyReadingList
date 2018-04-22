@@ -13,6 +13,8 @@ class ListItems extends Component {
   render() {
     const currentList = this.state.match.params.viewId;
     const capsСurrentList = currentList[0].toUpperCase() + currentList.slice(1);
+    const draggable = "wishlist" === currentList;
+
     return (
       <MyContext.Consumer>
         {ctx => (
@@ -35,13 +37,25 @@ class ListItems extends Component {
                     new Date(ctx.state.books[a].date).getTime(),
                     new Date(ctx.state.books[b].date).getTime()
                   ];
+                  const [order1, order2] = [
+                    ctx.state.books[a].order,
+                    ctx.state.books[b].order
+                  ];
+                  if ("wishlist" === currentList) {
+                    return order2 - order1;
+                  }
                   if ("wishlist" !== currentList || "read" !== currentList) {
                     return date2 - date1;
                   }
                   return 0;
                 })
                 .map(key => (
-                  <Item key={key} book={ctx.state.books[key]} index={key} />
+                  <Item
+                    key={key}
+                    book={ctx.state.books[key]}
+                    index={key}
+                    draggable={draggable}
+                  />
                 ))
             ) : (
               <p>Nothing is here</p>
