@@ -193,6 +193,11 @@
   line-height: 48px;
   padding: 0 16px;
   text-decoration: none;
+
+  @media (max-width: 425px) {
+    height: 36px;
+    line-height: 36px;
+  }
 }
 
 .side-nav__content .side-nav__lnk:hover,
