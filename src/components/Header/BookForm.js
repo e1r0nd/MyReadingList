@@ -9,6 +9,10 @@ class BookForm extends Component {
     titleRef: PropTypes.object.isRequired
   };
 
+  state = {
+    error: false
+  };
+
   componentDidMount() {
     // Lazy load the background image
     setTimeout(() => {
@@ -20,8 +24,9 @@ class BookForm extends Component {
   authorRef = React.createRef();
   dateRef = React.createRef();
   markRef = React.createRef();
+  errorRef = React.createRef();
 
-  sumbitBook = (e, cb) => {
+  sumbitBook = (e, cb, ctx) => {
     const book = {
       author: this.authorRef.value.value,
       date: this.dateRef.value.value,
@@ -30,6 +35,14 @@ class BookForm extends Component {
     };
 
     e.preventDefault();
+
+    if (
+      ctx.isTitleDuplicated(book.title) ||
+      ctx.isEmpty(book.title, book.author)
+    ) {
+      return;
+    }
+
     switch (book.mark) {
       case "0":
         book.list = "read";
@@ -64,6 +77,7 @@ class BookForm extends Component {
     };
 
     this.props.context.changeBook(updatedBook);
+    this.props.context.state.error && this.props.context.clearErrorState();
   };
 
   handleDelete = (e, ctx) => {
@@ -74,6 +88,8 @@ class BookForm extends Component {
   };
 
   render() {
+    this.errorClassName = "";
+
     return (
       <MyContext.Consumer>
         {ctx => (
@@ -90,13 +106,24 @@ class BookForm extends Component {
                 onSubmit={e => {
                   this.sumbitBook(
                     e,
-                    ctx[ctx.state.currentIndex ? "updateBook" : "addBook"]
+                    ctx[ctx.state.currentIndex ? "updateBook" : "addBook"],
+                    ctx
                   );
                 }}
               >
+                <div
+                  className={`form__control form__control--narrow inp-fld ${
+                    ctx.state.error ? "u--haserror" : ""
+                  } errors-fld`}
+                  ref={this.errorRef}
+                >
+                  {ctx.state.errorMessage}
+                </div>
                 <input
                   name="title"
-                  className="form__control form__control--narrow inp-fld"
+                  className={`form__control form__control--narrow inp-fld ${
+                    0 < ctx.state.error ? "u--haserror" : ""
+                  }`}
                   ref={this.props.titleRef}
                   type="text"
                   placeholder="Title"
@@ -105,7 +132,9 @@ class BookForm extends Component {
                 />
                 <input
                   name="author"
-                  className="form__control form__control--narrow inp-fld"
+                  className={`form__control form__control--narrow inp-fld ${
+                    2 === ctx.state.error ? "u--haserror" : ""
+                  }`}
                   ref={this.authorRef}
                   type="text"
                   placeholder="Author"

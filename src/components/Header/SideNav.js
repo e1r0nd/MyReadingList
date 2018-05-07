@@ -39,8 +39,10 @@ class SideNav extends Component {
       "transitionend",
       this.onTransitionEnd
     );
-    "BookForm" === this.props.componentName &&
+    if ("BookForm" === this.props.componentName) {
       this.props.context.setCurrentBook();
+      this.props.context.clearErrorState();
+    }
   };
 
   onTransitionEnd = e => {

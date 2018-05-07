@@ -33,7 +33,9 @@ class MyProvider extends Component {
       title: "",
       action: "",
       hideForm: null
-    }
+    },
+    error: 0,
+    errorMessage: ""
   };
 
   componentDidMount() {
@@ -119,6 +121,13 @@ class MyProvider extends Component {
     await this.loadLocalBooks();
   };
 
+  setError = (error, errorMessage) => {
+    this.setState({
+      error,
+      errorMessage
+    });
+  };
+
   render() {
     return (
       <MyContext.Provider
@@ -178,6 +187,27 @@ class MyProvider extends Component {
             const books = { ...this.state.books };
             books[`book${Date.now()}`] = book;
             this.setState({ books });
+          },
+          isTitleDuplicated: title => {
+            const books = { ...this.state.books };
+            const isTitleDuplicated = !!Object.keys(books).filter(
+              i => title === books[i].title
+            ).length;
+
+            this.setError(1, "Such book already exist");
+
+            return isTitleDuplicated;
+          },
+          isEmpty: (title, author) => {
+            const isEmpty = !title.trim() || !author.trim();
+
+            this.setError(2, "Title and Author are required");
+
+            return isEmpty;
+          },
+          clearErrorState: () => {
+            this.setState({ error: 0 });
+            setTimeout(() => this.setState({ errorMessage: "" }), 250);
           },
           removeBook: index => {
             console.log(index);
