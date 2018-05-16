@@ -64,6 +64,20 @@ class BookForm extends Component {
       default:
         console.warning("Book.mark field is empty. Should be String value");
     }
+
+    if (
+      ("done" === book.list ||
+        "favorites" === book.list ||
+        "blamelist" === book.list) &&
+      !book.date
+    ) {
+      const today = new Date();
+      const dd = String(today.getDate()).padStart(2, "0");
+      const mm = String(today.getMonth() + 1).padStart(2, "0");
+      const yyyy = today.getFullYear();
+
+      book.date = `${yyyy}-${mm}-${dd}`;
+    }
     cb(book);
     this.props.hideSideNav();
     e.currentTarget.reset();

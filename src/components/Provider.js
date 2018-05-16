@@ -191,7 +191,7 @@ class MyProvider extends Component {
           isTitleDuplicated: title => {
             const books = { ...this.state.books };
             const isTitleDuplicated = !!Object.keys(books).filter(
-              i => title === books[i].title
+              i => title === books[i].title && i !== this.state.currentIndex
             ).length;
 
             this.setError(1, "Such book already exist");
