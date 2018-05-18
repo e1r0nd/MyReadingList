@@ -44,6 +44,7 @@ class Search extends Component {
               placeholder="Search..."
               onChange={() => this.handleSearch(ctx)}
               onKeyUp={e => this.handleKeys(e, ctx)}
+              value={ctx.state.query}
             />
           </form>
         )}

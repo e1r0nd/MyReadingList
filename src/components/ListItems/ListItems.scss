@@ -28,7 +28,15 @@
   }
 
   &__author {
+    background: none;
+    border: none;
+    font-size: inherit;
     font-style: italic;
+
+    &:hover {
+      text-decoration: underline;
+      @include cursor-pointer;
+    }
   }
 
   &__date {

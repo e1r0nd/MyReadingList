@@ -35,6 +35,11 @@ class Item extends Component {
     ctx.setCurrentBook(this.props.index);
     ctx.setSideNav("BookForm", true);
   };
+  handleAuthorClick = (e, ctx) => {
+    e.preventDefault();
+    e.stopPropagation();
+    ctx.updateQuery(this.props.book.author);
+  };
 
   render() {
     if (!this.props.book) {
@@ -56,7 +61,12 @@ class Item extends Component {
             <div className="list-item__content">
               <span className="list-item__title">&laquo;{title}&raquo;. </span>{" "}
               <div className="list-item__mark">
-                <span className="list-item__author">{author}</span>{" "}
+                <button
+                  onClick={e => this.handleAuthorClick(e, ctx)}
+                  className="list-item__author"
+                >
+                  {author}
+                </button>{" "}
                 {"Done" === ctx.state.title && (
                   <span
                     className="book-mark"

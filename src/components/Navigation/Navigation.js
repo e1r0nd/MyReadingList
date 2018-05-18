@@ -86,7 +86,12 @@ class Navigation extends Component {
               context={ctx}
               titleRef={this.titleRef}
             />
-            <div className="header search-bar" ref={this.searchBarRef}>
+            <div
+              className={`header search-bar ${
+                ctx.state.query ? "search-bar-active" : ""
+              }`}
+              ref={this.searchBarRef}
+            >
               <Search
                 showSearchBar={this.showSearchBar}
                 searchField={this.searchField}
