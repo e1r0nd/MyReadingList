@@ -171,12 +171,12 @@ class BookForm extends Component {
                   value={ctx.state.currentBook.mark || ""}
                   onChange={this.handleChange}
                 >
+                  <option value="5">Want to read</option>
                   <option value="0">Reading Now</option>
                   <option value="1">1 star</option>
                   <option value="2">2 stars</option>
                   <option value="3">3 stars</option>
                   <option value="4">Favorite</option>
-                  <option value="5">Want to read</option>
                   <option value="6">Don&rsquo;t want to read</option>
                 </select>
                 <div className="form__btns">
