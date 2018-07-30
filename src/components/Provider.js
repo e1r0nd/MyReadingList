@@ -35,7 +35,8 @@ class MyProvider extends Component {
       hideForm: null
     },
     error: 0,
-    errorMessage: ""
+    errorMessage: "",
+    shaded: "loading"
   };
 
   componentDidMount() {
@@ -75,6 +76,7 @@ class MyProvider extends Component {
       if (!idbKeyvalRef) {
         idbKeyval.set("localBooks", books);
       }
+      this.setState({ shaded: "" });
     });
   };
 
@@ -84,6 +86,7 @@ class MyProvider extends Component {
 
     await this.setState({ books });
     await this.syncStart();
+    await this.setState({ shaded: "" });
   };
 
   syncStart = () => {
@@ -97,10 +100,12 @@ class MyProvider extends Component {
 
   syncStop = () => {
     console.log("Sync stop:", this.state.books);
+
     base.removeBinding(this.ref);
   };
 
   authenticate = () => {
+    this.setState({ shaded: "loading" });
     const authProvider = new firebase.auth.FacebookAuthProvider();
     firebaseApp
       .auth()
@@ -115,6 +120,7 @@ class MyProvider extends Component {
 
   // eslint-disable-next-line
   logout = async () => {
+    this.setState({ shaded: "loading" });
     await firebase.auth().signOut();
     await this.setUserId("", "");
     await this.syncStop();
@@ -252,6 +258,10 @@ class MyProvider extends Component {
               action: ""
             };
             this.setState({ modal });
+          },
+          showShade: shaded => {
+            shaded = shaded ? "loading" : "";
+            this.setState({ shaded });
           }
         }}
       >

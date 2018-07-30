@@ -7,6 +7,8 @@ import Import from "./Import";
 import NotFound from "./NotFound";
 import Navigation from "../components/Navigation/Navigation";
 import Footer from "../components/Footer/Footer";
+import Shade from "../components/Shade/Shade";
+
 import MyProvider from "./Provider";
 
 class Router extends Component {
@@ -16,6 +18,7 @@ class Router extends Component {
         <MyProvider>
           <BrowserRouter>
             <Fragment>
+              <Shade />
               <Navigation />
               <main className="main">
                 <Switch>

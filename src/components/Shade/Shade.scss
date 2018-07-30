@@ -1,0 +1,60 @@
+@import "../../styles/variables";
+
+.shade {
+  background: $header-hero-shadow;
+  height: 0;
+  height: 100vh;
+  left: 0;
+  opacity: 0;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  transition: opacity 0.3s $curve-transition;
+  width: 100vw;
+  will-change: opacity;
+  z-index: -1;
+
+  &.loading {
+    opacity: 1;
+    z-index: 300;
+  }
+}
+.loading div {
+  border-radius: 50%;
+  height: 30px;
+  position: absolute;
+  top: 45%;
+  width: 30px;
+  will-change: left;
+}
+.loading .shade__el-one {
+  -webkit-animation: move 2s infinite cubic-bezier(0.2, 0.64, 0.81, 0.23);
+  animation: move 2s infinite cubic-bezier(0.2, 0.64, 0.81, 0.23);
+  background-color: #87cdcd;
+}
+.loading .shade__el-two {
+  -webkit-animation: move 2s 150ms infinite cubic-bezier(0.2, 0.64, 0.81, 0.23);
+  animation: move 2s 150ms infinite cubic-bezier(0.2, 0.64, 0.81, 0.23);
+  background-color: #ff9d84;
+}
+.loading .shade__el-three {
+  -webkit-animation: move 2s 300ms infinite cubic-bezier(0.2, 0.64, 0.81, 0.23);
+  animation: move 2s 300ms infinite cubic-bezier(0.2, 0.64, 0.81, 0.23);
+  background-color: #f0e797;
+}
+@-webkit-keyframes move {
+  0% {
+    left: 0%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+@keyframes move {
+  0% {
+    left: 0%;
+  }
+  100% {
+    left: 100%;
+  }
+}
