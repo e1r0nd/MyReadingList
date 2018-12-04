@@ -15,7 +15,7 @@
     "react-router-dom": "^4.2.2",
     "react-scripts": "2.0.0",
     "react-sortable-hoc": "^0.6.8",
-    "stylelint": "^9.2.0",
+    "stylelint": "^9.8.0",
     "stylelint-order": "^0.8.1",
     "snyk": "^1.103.1"
   },
